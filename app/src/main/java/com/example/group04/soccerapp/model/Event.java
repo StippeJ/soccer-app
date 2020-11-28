@@ -8,67 +8,67 @@ import com.google.gson.annotations.SerializedName;
 public class Event {
 
     @SerializedName("strOfficial")
-    private Object strOfficial;
+    private String strOfficial;
 
     @SerializedName("intHomeShots")
-    private Object intHomeShots;
+    private int intHomeShots;
 
     @SerializedName("strSport")
     private String strSport;
 
     @SerializedName("strHomeLineupDefense")
-    private Object strHomeLineupDefense;
+    private String strHomeLineupDefense;
 
     @SerializedName("strAwayLineupSubstitutes")
-    private Object strAwayLineupSubstitutes;
+    private String strAwayLineupSubstitutes;
 
     @SerializedName("strTweet1")
-    private Object strTweet1;
+    private String strTweet1;
 
     @SerializedName("strTweet2")
-    private Object strTweet2;
+    private String strTweet2;
 
     @SerializedName("strTweet3")
-    private Object strTweet3;
+    private String strTweet3;
 
     @SerializedName("idLeague")
-    private String idLeague;
+    private int idLeague;
 
     @SerializedName("idSoccerXML")
-    private Object idSoccerXML;
+    private int idSoccerXML;
 
     @SerializedName("strHomeLineupForward")
-    private Object strHomeLineupForward;
+    private String strHomeLineupForward;
 
     @SerializedName("strTVStation")
-    private Object strTVStation;
+    private String strTVStation;
 
     @SerializedName("strHomeGoalDetails")
-    private Object strHomeGoalDetails;
+    private String strHomeGoalDetails;
 
     @SerializedName("strVideo")
-    private Object strVideo;
+    private String strVideo;
 
     @SerializedName("strAwayLineupGoalkeeper")
-    private Object strAwayLineupGoalkeeper;
+    private String strAwayLineupGoalkeeper;
 
     @SerializedName("strAwayLineupMidfield")
-    private Object strAwayLineupMidfield;
+    private String strAwayLineupMidfield;
 
     @SerializedName("idEvent")
-    private String idEvent;
+    private int idEvent;
 
     @SerializedName("intRound")
-    private String intRound;
+    private int intRound;
 
     @SerializedName("strHomeYellowCards")
-    private Object strHomeYellowCards;
+    private String strHomeYellowCards;
 
     @SerializedName("idHomeTeam")
-    private String idHomeTeam;
+    private int idHomeTeam;
 
     @SerializedName("intHomeScore")
-    private Object intHomeScore;
+    private int intHomeScore;
 
     @SerializedName("dateEvent")
     private String dateEvent;
@@ -83,43 +83,43 @@ public class Event {
     private String strAwayTeam;
 
     @SerializedName("strHomeLineupMidfield")
-    private Object strHomeLineupMidfield;
+    private String strHomeLineupMidfield;
 
     @SerializedName("strPostponed")
     private String strPostponed;
 
     @SerializedName("strDate")
-    private Object strDate;
+    private String strDate;
 
     @SerializedName("strHomeFormation")
-    private Object strHomeFormation;
+    private String strHomeFormation;
 
     @SerializedName("strMap")
-    private Object strMap;
+    private String strMap;
 
     @SerializedName("idAwayTeam")
-    private String idAwayTeam;
+    private int idAwayTeam;
 
     @SerializedName("strAwayRedCards")
-    private Object strAwayRedCards;
+    private String strAwayRedCards;
 
     @SerializedName("strBanner")
-    private Object strBanner;
+    private String strBanner;
 
     @SerializedName("strFanart")
-    private Object strFanart;
+    private String strFanart;
 
     @SerializedName("strDescriptionEN")
-    private Object strDescriptionEN;
+    private String strDescriptionEN;
 
     @SerializedName("dateEventLocal")
-    private Object dateEventLocal;
+    private String dateEventLocal;
 
     @SerializedName("strResult")
-    private Object strResult;
+    private String strResult;
 
     @SerializedName("intAwayShots")
-    private Object intAwayShots;
+    private int intAwayShots;
 
     @SerializedName("strFilename")
     private String strFilename;
@@ -131,16 +131,16 @@ public class Event {
     private String strVenue;
 
     @SerializedName("strAwayGoalDetails")
-    private Object strAwayGoalDetails;
+    private String strAwayGoalDetails;
 
     @SerializedName("strAwayLineupForward")
-    private Object strAwayLineupForward;
+    private String strAwayLineupForward;
 
     @SerializedName("strTimeLocal")
-    private Object strTimeLocal;
+    private String strTimeLocal;
 
     @SerializedName("idAPIfootball")
-    private String idAPIfootball;
+    private int idAPIfootball;
 
     @SerializedName("strLocked")
     private String strLocked;
@@ -149,58 +149,58 @@ public class Event {
     private String strSeason;
 
     @SerializedName("intSpectators")
-    private Object intSpectators;
+    private int intSpectators;
 
     @SerializedName("strEventAlternate")
     private String strEventAlternate;
 
     @SerializedName("strHomeRedCards")
-    private Object strHomeRedCards;
+    private String strHomeRedCards;
 
     @SerializedName("strHomeLineupGoalkeeper")
-    private Object strHomeLineupGoalkeeper;
+    private String strHomeLineupGoalkeeper;
 
     @SerializedName("strHomeLineupSubstitutes")
-    private Object strHomeLineupSubstitutes;
+    private String strHomeLineupSubstitutes;
 
     @SerializedName("strAwayFormation")
-    private Object strAwayFormation;
+    private String strAwayFormation;
 
     @SerializedName("strEvent")
     private String strEvent;
 
     @SerializedName("strAwayYellowCards")
-    private Object strAwayYellowCards;
+    private String strAwayYellowCards;
 
     @SerializedName("strAwayLineupDefense")
-    private Object strAwayLineupDefense;
+    private String strAwayLineupDefense;
 
     @SerializedName("strHomeTeam")
     private String strHomeTeam;
 
     @SerializedName("strThumb")
-    private Object strThumb;
+    private String strThumb;
 
     @SerializedName("strLeague")
     private String strLeague;
 
     @SerializedName("intAwayScore")
-    private Object intAwayScore;
+    private int intAwayScore;
 
     @SerializedName("strCity")
-    private Object strCity;
+    private String strCity;
 
     @SerializedName("strPoster")
-    private Object strPoster;
+    private String strPoster;
 
     @SerializedName("strStatus")
     private String strStatus;
 
-    public Object getStrOfficial() {
+    public String getStrOfficial() {
         return strOfficial;
     }
 
-    public Object getIntHomeShots() {
+    public int getIntHomeShots() {
         return intHomeShots;
     }
 
@@ -208,75 +208,75 @@ public class Event {
         return strSport;
     }
 
-    public Object getStrHomeLineupDefense() {
+    public String getStrHomeLineupDefense() {
         return strHomeLineupDefense;
     }
 
-    public Object getStrAwayLineupSubstitutes() {
+    public String getStrAwayLineupSubstitutes() {
         return strAwayLineupSubstitutes;
     }
 
-    public Object getStrTweet1() {
+    public String getStrTweet1() {
         return strTweet1;
     }
 
-    public Object getStrTweet2() {
+    public String getStrTweet2() {
         return strTweet2;
     }
 
-    public Object getStrTweet3() {
+    public String getStrTweet3() {
         return strTweet3;
     }
 
-    public String getIdLeague() {
+    public int getIdLeague() {
         return idLeague;
     }
 
-    public Object getIdSoccerXML() {
+    public int getIdSoccerXML() {
         return idSoccerXML;
     }
 
-    public Object getStrHomeLineupForward() {
+    public String getStrHomeLineupForward() {
         return strHomeLineupForward;
     }
 
-    public Object getStrTVStation() {
+    public String getStrTVStation() {
         return strTVStation;
     }
 
-    public Object getStrHomeGoalDetails() {
+    public String getStrHomeGoalDetails() {
         return strHomeGoalDetails;
     }
 
-    public Object getStrVideo() {
+    public String getStrVideo() {
         return strVideo;
     }
 
-    public Object getStrAwayLineupGoalkeeper() {
+    public String getStrAwayLineupGoalkeeper() {
         return strAwayLineupGoalkeeper;
     }
 
-    public Object getStrAwayLineupMidfield() {
+    public String getStrAwayLineupMidfield() {
         return strAwayLineupMidfield;
     }
 
-    public String getIdEvent() {
+    public int getIdEvent() {
         return idEvent;
     }
 
-    public String getIntRound() {
+    public int getIntRound() {
         return intRound;
     }
 
-    public Object getStrHomeYellowCards() {
+    public String getStrHomeYellowCards() {
         return strHomeYellowCards;
     }
 
-    public String getIdHomeTeam() {
+    public int getIdHomeTeam() {
         return idHomeTeam;
     }
 
-    public Object getIntHomeScore() {
+    public int getIntHomeScore() {
         return intHomeScore;
     }
 
@@ -296,7 +296,7 @@ public class Event {
         return strAwayTeam;
     }
 
-    public Object getStrHomeLineupMidfield() {
+    public String getStrHomeLineupMidfield() {
         return strHomeLineupMidfield;
     }
 
@@ -304,47 +304,47 @@ public class Event {
         return strPostponed;
     }
 
-    public Object getStrDate() {
+    public String getStrDate() {
         return strDate;
     }
 
-    public Object getStrHomeFormation() {
+    public String getStrHomeFormation() {
         return strHomeFormation;
     }
 
-    public Object getStrMap() {
+    public String getStrMap() {
         return strMap;
     }
 
-    public String getIdAwayTeam() {
+    public int getIdAwayTeam() {
         return idAwayTeam;
     }
 
-    public Object getStrAwayRedCards() {
+    public String getStrAwayRedCards() {
         return strAwayRedCards;
     }
 
-    public Object getStrBanner() {
+    public String getStrBanner() {
         return strBanner;
     }
 
-    public Object getStrFanart() {
+    public String getStrFanart() {
         return strFanart;
     }
 
-    public Object getStrDescriptionEN() {
+    public String getStrDescriptionEN() {
         return strDescriptionEN;
     }
 
-    public Object getDateEventLocal() {
+    public String getDateEventLocal() {
         return dateEventLocal;
     }
 
-    public Object getStrResult() {
+    public String getStrResult() {
         return strResult;
     }
 
-    public Object getIntAwayShots() {
+    public int getIntAwayShots() {
         return intAwayShots;
     }
 
@@ -360,19 +360,19 @@ public class Event {
         return strVenue;
     }
 
-    public Object getStrAwayGoalDetails() {
+    public String getStrAwayGoalDetails() {
         return strAwayGoalDetails;
     }
 
-    public Object getStrAwayLineupForward() {
+    public String getStrAwayLineupForward() {
         return strAwayLineupForward;
     }
 
-    public Object getStrTimeLocal() {
+    public String getStrTimeLocal() {
         return strTimeLocal;
     }
 
-    public String getIdAPIfootball() {
+    public int getIdAPIfootball() {
         return idAPIfootball;
     }
 
@@ -384,7 +384,7 @@ public class Event {
         return strSeason;
     }
 
-    public Object getIntSpectators() {
+    public int getIntSpectators() {
         return intSpectators;
     }
 
@@ -392,19 +392,19 @@ public class Event {
         return strEventAlternate;
     }
 
-    public Object getStrHomeRedCards() {
+    public String getStrHomeRedCards() {
         return strHomeRedCards;
     }
 
-    public Object getStrHomeLineupGoalkeeper() {
+    public String getStrHomeLineupGoalkeeper() {
         return strHomeLineupGoalkeeper;
     }
 
-    public Object getStrHomeLineupSubstitutes() {
+    public String getStrHomeLineupSubstitutes() {
         return strHomeLineupSubstitutes;
     }
 
-    public Object getStrAwayFormation() {
+    public String getStrAwayFormation() {
         return strAwayFormation;
     }
 
@@ -412,11 +412,11 @@ public class Event {
         return strEvent;
     }
 
-    public Object getStrAwayYellowCards() {
+    public String getStrAwayYellowCards() {
         return strAwayYellowCards;
     }
 
-    public Object getStrAwayLineupDefense() {
+    public String getStrAwayLineupDefense() {
         return strAwayLineupDefense;
     }
 
@@ -424,7 +424,7 @@ public class Event {
         return strHomeTeam;
     }
 
-    public Object getStrThumb() {
+    public String getStrThumb() {
         return strThumb;
     }
 
@@ -432,15 +432,15 @@ public class Event {
         return strLeague;
     }
 
-    public Object getIntAwayScore() {
+    public int getIntAwayScore() {
         return intAwayScore;
     }
 
-    public Object getStrCity() {
+    public String getStrCity() {
         return strCity;
     }
 
-    public Object getStrPoster() {
+    public String getStrPoster() {
         return strPoster;
     }
 
