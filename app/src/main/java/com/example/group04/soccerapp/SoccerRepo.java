@@ -1,6 +1,8 @@
 package com.example.group04.soccerapp;
 
 import com.example.group04.soccerapp.model.ClubDetailsResponse;
+import com.example.group04.soccerapp.model.EventsResponse;
+import com.example.group04.soccerapp.model.TableResponse;
 import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;
@@ -9,13 +11,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * @author Jan Stippe
  */
 public class SoccerRepo {
 
-    SoccerApi soccerApi;
+    private final SoccerApi soccerApi;
+    private final int bundesligaId = 4331;
 
     public SoccerRepo() {
         Gson gson = new Gson();
@@ -34,8 +39,33 @@ public class SoccerRepo {
         soccerApi = retrofit.create(SoccerApi.class);
     }
 
-    public void getClubDetails(Callback<ClubDetailsResponse> callback, int teamId) {
-        Call<ClubDetailsResponse> call = soccerApi.getClubDetails(teamId);
+    public void getTable(Callback<TableResponse> callback, String season) {
+        Call<TableResponse> call = soccerApi.getTable(bundesligaId, season);
+        call.enqueue(callback);
+    }
+
+    public void getClubDetails(Callback<ClubDetailsResponse> callback, int clubId) {
+        Call<ClubDetailsResponse> call = soccerApi.getClubDetails(clubId);
+        call.enqueue(callback);
+    }
+
+    public void getNextEventsOfLeague(Callback<EventsResponse> callback) {
+        Call<EventsResponse> call = soccerApi.getNextEventsOfLeague(bundesligaId);
+        call.enqueue(callback);
+    }
+
+    public void getLastEventsOfLeague(Callback<EventsResponse> callback) {
+        Call<EventsResponse> call = soccerApi.getLastEventsOfLeague(bundesligaId);
+        call.enqueue(callback);
+    }
+
+    public void getNextEventsOfClub(Callback<EventsResponse> callback, int clubId) {
+        Call<EventsResponse> call = soccerApi.getNextEventsOfClub(clubId);
+        call.enqueue(callback);
+    }
+
+    public void getLastEventsOfClub(Callback<EventsResponse> callback, int clubId) {
+        Call<EventsResponse> call = soccerApi.getLastEventsOfClub(clubId);
         call.enqueue(callback);
     }
 
