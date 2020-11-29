@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--author: Tim-Loris Deinert-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClubActivity">
+
+    <TextView
+        android:id="@+id/clubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Borussia Dortmund"/>
+
+    <ImageView
+        android:id="@+id/clubImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/clubName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:src="@drawable/test_badge"
+        android:contentDescription="@string/clubImageDescription"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/clubImage"
+        app:layout_constraintBottom_toTopOf="@id/infoScrollView"/>
+
+    <ScrollView
+        android:id="@+id/infoScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/clubImage"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/infoHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/infoHeadline"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/foundedHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/foundedHeadline"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/infoHeadline"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/foundedYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/foundedHeadline"
+                app:layout_constraintLeft_toLeftOf="@id/foundedHeadline"
+                tools:text="1909"/>
+
+            <TextView
+                android:id="@+id/socialMediaHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/socialMediaHeadline"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/foundedYear"
+                app:layout_constraintLeft_toLeftOf="@id/foundedHeadline"/>
+
+            <ImageView
+                android:id="@+id/iconFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_facebook"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/socialMediaHeadline"
+                app:layout_constraintTop_toBottomOf="@id/socialMediaHeadline"
+                android:contentDescription="@string/iconFacebookDescription" />
+
+            <TextView
+                android:id="@+id/linkFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/iconFacebook"
+                app:layout_constraintTop_toTopOf="@id/iconFacebook"
+                tools:text="www.facebook.com/BVB/"/>
+
+            <ImageView
+                android:id="@+id/iconTwitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_twitter"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/socialMediaHeadline"
+                app:layout_constraintTop_toBottomOf="@id/iconFacebook"
+                android:contentDescription="@string/iconTwitterDescription" />
+
+            <TextView
+                android:id="@+id/linkTwitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/iconTwitter"
+                app:layout_constraintTop_toTopOf="@id/iconTwitter"
+                tools:text="twitter.com/bvb"/>
+
+            <ImageView
+                android:id="@+id/iconInstagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_instagram"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/socialMediaHeadline"
+                app:layout_constraintTop_toBottomOf="@id/iconTwitter"
+                android:contentDescription="@string/iconInstagramDescription"/>
+
+            <TextView
+                android:id="@+id/linkInstagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/iconInstagram"
+                app:layout_constraintTop_toTopOf="@id/iconInstagram"
+                tools:text="instagram.com/bvb09"/>
+
+            <TextView
+                android:id="@+id/stadiumHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stadiumHeadline"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/infoHeadline"
+                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"/>
+
+            <TextView
+                android:id="@+id/stadiumName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/stadiumHeadline"
+                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+                tools:text="Westfalenstadion"/>
+
+            <ImageView
+                android:id="@+id/stadiumImage"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stadiumName"
+                tools:src="@drawable/test_stadium"
+                android:contentDescription="@string/stadiumImageDescription" />
+
+            <TextView
+                android:id="@+id/capacityHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/capacityHeadline"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/stadiumImage"
+                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"/>
+
+            <TextView
+                android:id="@+id/capacityNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/capacityHeadline"
+                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+                tools:text="99999"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/capacityNumber"
+                app:layout_constraintBottom_toTopOf="@id/descriptionHeadline"/>
+
+            <TextView
+                android:id="@+id/descriptionHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descriptionHeadline"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@id/capacityNumber"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/clubDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/descriptionHeadline"
+                tools:text="@string/toolsDescription"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
