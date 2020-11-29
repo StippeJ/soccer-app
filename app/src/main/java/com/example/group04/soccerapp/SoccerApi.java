@@ -31,4 +31,7 @@ public interface SoccerApi {
     @GET("eventslast.php")
     Call<EventsResponse> getLastEventsOfClub(@Query("id") int clubId);
 
+    @GET("lookupevent.php")
+    Call<EventsResponse> getEventById(@Query("id") int eventId);
+
 }

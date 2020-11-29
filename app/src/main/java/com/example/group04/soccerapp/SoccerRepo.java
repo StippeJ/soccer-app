@@ -69,4 +69,9 @@ public class SoccerRepo {
         call.enqueue(callback);
     }
 
+    public void getEventById(Callback<EventsResponse> callback, int eventId) {
+        Call<EventsResponse> call = soccerApi.getEventById(eventId);
+        call.enqueue(callback);
+    }
+
 }
