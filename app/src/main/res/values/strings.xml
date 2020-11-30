@@ -3,9 +3,8 @@
     <string name="infoHeadline">Club infos:</string>
     <string name="clubImageDescription">Image of the Club Badge</string>
     <string name="stadiumHeadline">Home Stadium:</string>
-    <string name="capacityHeadline">Capacity:</string>
+    <string name="capacityHeadline">Stadium capacity:</string>
     <string name="foundedHeadline">Founded in:</string>
-    <string name="socialMediaHeadline">Social Media Channels:</string>
     <string name="iconFacebookDescription">Facebook Icon</string>
     <string name="iconTwitterDescription">Twitter Icon</string>
     <string name="iconInstagramDescription">Instagram Icon</string>
