@@ -16,4 +16,6 @@
     <string name="tab_text_2">Next events</string>
     <string name="apiResponseError">Error! The API is not responding. Please try again now or later!</string>
     <string name="apiErrorOnFailure">Error! Please check your Internet and try again or contact the support!</string>
+    <string name="getExtraError">An Error Occurred! Please go back and try again!</string>
+    <string name="noDescription">There is no description provided by the API</string>
 </resources>
