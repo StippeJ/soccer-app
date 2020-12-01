@@ -221,6 +221,7 @@ public class ClubActivity extends AppCompatActivity {
      * Set the visibility of the Error TextView to visible and show a error message
      * @param onStart boolean value to indicate if the error occured in the onStart method or not to set an individual error message
      * @param onFailure boolean value to indicate if the error occured in the onFailure method or not to set an individual error message
+     * @author Tim-Loris Deinert
      */
     public void showError(Boolean onStart, Boolean onFailure) {
         //set error message visibility
@@ -251,17 +252,15 @@ public class ClubActivity extends AppCompatActivity {
      * @author Tim-Loris Deinert
      */
     public String refactorURL(String url) {
-        if (url.indexOf("https://www") < 0) {
-            if(url.indexOf("www") < 0) {
+        if (!url.contains("https://www")) {
+            if(!url.contains("www")) {
                 url = "https://www." + url;
-                return url;
             }
             else {
                 url = "https://" + url;
-                return url;
             }
         }
-        else { return url; }
+        return url;
     }
 
 }
