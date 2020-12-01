@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/GeneralTextView</item>
+        <item name="android:buttonStyle">@style/GeneralButton</item>
     </style>
 
     <style name="Theme.SoccerApp.NoActionBar">
@@ -22,4 +24,47 @@
     <style name="Theme.SoccerApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.SoccerApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--author: Tim-Loris Deinert-->
+    <!--use of marquee function: use "android:singleLine="true"" in your TextView Layout and it should scroll automatically through the Text if the Text is longer than the View-->
+    <style name="GeneralTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+
+    <!--author: Tim-Loris Deinert-->
+    <style name="GeneralButton" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@color/primaryColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <!--author: Tim-Loris Deinert-->
+    <style name="Headline" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <!--author: Tim-Loris Deinert-->
+    <style name="Subheading" parent="Headline">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!--author: Tim-Loris Deinert-->
+    <style name="Error" parent="Subheading">
+        <item name="android:textColor">@color/primaryColor</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--author: Tim-Loris Deinert-->
+    <style name="Spacer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/primaryColor</item>
+    </style>
+
 </resources>

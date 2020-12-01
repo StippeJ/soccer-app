@@ -1,17 +1,19 @@
 <resources>
     <string name="app_name">Soccer App</string>
-    <string name="infoHeadline">Club infos:</string>
+    <string name="infoSubheading">Club infos:</string>
     <string name="clubImageDescription">Image of the Club Badge</string>
-    <string name="stadiumHeadline">Home Stadium:</string>
-    <string name="capacityHeadline">Stadium capacity:</string>
-    <string name="foundedHeadline">Founded in:</string>
+    <string name="stadiumHeadline"><u>Home Stadium:</u></string>
+    <string name="capacityHeadline"><u>Stadium capacity:</u></string>
+    <string name="foundedHeadline"><u>Founded in:</u></string>
     <string name="iconFacebookDescription">Facebook Icon</string>
     <string name="iconTwitterDescription">Twitter Icon</string>
     <string name="iconInstagramDescription">Instagram Icon</string>
-    <string name="descriptionHeadline">Club Description:</string>
+    <string name="descriptionSubheading">Club Description:</string>
     <string name="toolsDescription">Ballspielverein Borussia 09 e.V. Dortmund, commonly known as Borussia Dortmund , Dortmund, or BVB, is a German sports club based in Dortmund, North Rhine-Westphalia. The football team is part of a large membership-based sports club with 100,000 members, making BVB the third largest sports club by membership in Germany. Dortmund plays in the Bundesliga, the top tier of the German football league system. Dortmund is one of the most successful clubs in German football history.\r\n\r\nBorussia Dortmund was founded in 1909 by seventeen football players from Dortmund. Borussia Dortmund have won eight German championships, three DFB-Pokals, five DFL-Supercups, one UEFA Champions League, one UEFA Cup Winners\' Cup, and one Intercontinental Cup. Their Cup Winners\' Cup win in 1966 made them the first German club to win a European title.\r\n\r\nSince 1974, Dortmund have played their home games at Westfalenstadion. The stadium is the biggest stadium in Germany. Dortmund has the highest average attendance of any Association football club in the world. Borussia Dortmund\'s colours are black and yellow, giving the club its nickname die Schwarzgelben. Dortmund holds a long-standing rivalry with Ruhr neighbours Schalke, known as the Revierderby. Dortmund also has a rivalry with Bayern Munich. In terms of Deloitte\'s annual Football Money League, Dortmund is the second biggest sports club in Germany and the eleventh biggest football team in the world.</string>
     <string name="stadiumImageDescription">Image of the Club Stadium</string>
     <string name="title_activity_overview">Overview</string>
     <string name="tab_text_1">Table</string>
     <string name="tab_text_2">Next events</string>
+    <string name="apiResponseError">Error! The API is not responding. Please try again now or later!</string>
+    <string name="apiErrorOnFailure">Error! Please check your Internet and try again or contact the support!</string>
 </resources>
