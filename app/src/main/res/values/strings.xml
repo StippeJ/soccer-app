@@ -22,4 +22,6 @@
     <string name="eventLocation">Location:</string>
     <string name="eventLeague">League:</string>
     <string name="eventRound">Round:</string>
+    <string name="newsText">News</string>
+    <string name="bundesligaButtonText">To the Bundesliga</string>
 </resources>
