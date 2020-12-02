@@ -82,7 +82,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/guideline_vertical"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/spacer2">
+                app:layout_constraintBottom_toBottomOf="@id/spacer">
 
                 <ImageButton
                     android:id="@+id/iconFacebook"
@@ -181,7 +181,7 @@
                 tools:text="99999"/>
 
             <View
-                android:id="@+id/spacer2"
+                android:id="@+id/spacer"
                 style="@style/Spacer"
                 app:layout_constraintTop_toBottomOf="@id/capacityNumber"
                 app:layout_constraintBottom_toTopOf="@id/descriptionSubheading"

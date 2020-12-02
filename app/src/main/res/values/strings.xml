@@ -18,4 +18,8 @@
     <string name="apiErrorOnFailure">Error! Please check your Internet and try again or contact the support!</string>
     <string name="getExtraError">An Error Occurred! Please go back and try again!</string>
     <string name="noDescription">There is no description provided by the API</string>
+    <string name="eventDate">Date:</string>
+    <string name="eventLocation">Location:</string>
+    <string name="eventLeague">League:</string>
+    <string name="eventRound">Round:</string>
 </resources>

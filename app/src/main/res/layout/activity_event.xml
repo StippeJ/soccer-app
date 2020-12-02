@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author: Jan Stippe -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".EventActivity">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/eventGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="eventHeadline,imageHomeTeam,imageAwayTeam,spacer,eventDateTitle,eventLocationTitle,eventLeagueTitle,eventRoundTitle,eventDate,eventLocation,eventLeague,eventRound"/>
+
+        <TextView
+            android:id="@+id/eventHeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Headline"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Team A vs Team B"/>
+
+        <ImageView
+            android:id="@+id/imageHomeTeam"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:maxHeight="60dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toBottomOf="@+id/eventHeadline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/matchResult"
+            android:contentDescription="@string/clubImageDescription"/>
+
+        <TextView
+            android:id="@+id/matchResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
+            app:layout_constraintStart_toEndOf="@+id/imageHomeTeam"
+            app:layout_constraintEnd_toStartOf="@+id/imageAwayTeam"
+            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            tools:text="1 : 2"/>
+
+        <ImageView
+            android:id="@+id/imageAwayTeam"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:maxHeight="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
+            app:layout_constraintStart_toEndOf="@+id/matchResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            android:contentDescription="@string/clubImageDescription"/>
+
+        <View
+            android:id="@+id/spacer"
+            style="@style/Spacer"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintTop_toBottomOf="@id/imageHomeTeam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/eventDateTitle"/>
+
+        <TextView
+            android:id="@+id/eventDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            style="@style/Subheading"
+            app:layout_constraintTop_toBottomOf="@+id/spacer"
+            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            android:text="@string/eventDate"/>
+
+        <TextView
+            android:id="@+id/eventLocationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/Subheading"
+            app:layout_constraintTop_toBottomOf="@+id/eventDateTitle"
+            app:layout_constraintStart_toStartOf="@+id/imageHomeTeam"
+            android:text="@string/eventLocation"/>
+
+        <TextView
+            android:id="@+id/eventLeagueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/Subheading"
+            app:layout_constraintTop_toBottomOf="@+id/eventLocationTitle"
+            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            android:text="@string/eventLeague"/>
+
+        <TextView
+            android:id="@+id/eventRoundTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            style="@style/Subheading"
+            app:layout_constraintTop_toBottomOf="@+id/eventLeagueTitle"
+            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/eventRound"/>
+
+        <TextView
+            android:id="@+id/eventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@id/eventDateTitle"
+            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/eventDateTitle"/>
+
+        <TextView
+            android:id="@+id/eventLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@id/eventLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/eventLocationTitle"/>
+
+        <TextView
+            android:id="@+id/eventLeague"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@id/eventLeagueTitle"
+            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/eventLeagueTitle"/>
+
+        <TextView
+            android:id="@+id/eventRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@id/eventRoundTitle"
+            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/eventRoundTitle"/>
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Error"
+            android:visibility="invisible"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
