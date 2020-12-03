@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,7 +86,7 @@ public class EventActivity extends AppCompatActivity {
 
                         // Show the result of the current event (if match is finished)
                         if (currentEvent.getStrStatus().equals("Match Finished")) {
-                            eventResult.setText(String.format("%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
+                            eventResult.setText(String.format(Locale.getDefault(),"%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
                         } else {
                             eventResult.setText("- : -");
                         }
@@ -91,7 +94,7 @@ public class EventActivity extends AppCompatActivity {
                         eventDate.setText(getDateAndTime());
                         eventLocation.setText(currentEvent.getStrVenue());
                         eventLeague.setText(currentEvent.getStrLeague());
-                        eventRound.setText(Integer.toString(currentEvent.getIntRound()));
+                        eventRound.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
                     } else {
                         // Show error message
                         eventGroup.setVisibility(View.INVISIBLE);

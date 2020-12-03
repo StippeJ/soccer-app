@@ -1,8 +1,9 @@
-package com.example.group04.soccerapp;
+package com.example.group04.soccerapp.api;
 
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.group04.soccerapp.api.SoccerRepo;
 import com.example.group04.soccerapp.model.ClubDetails;
 import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.squareup.picasso.Picasso;

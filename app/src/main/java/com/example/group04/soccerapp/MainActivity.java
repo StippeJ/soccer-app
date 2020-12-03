@@ -11,8 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.group04.soccerapp.adapter.LastMatchAdapter;
+import com.example.group04.soccerapp.api.SoccerRepo;
 import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public void getLastMatchesFromApi() {
         soccerRepo.getLastEventsOfLeague(new Callback<EventsResponse>() {
             @Override
-            public void onResponse(Call<EventsResponse> call, Response<EventsResponse> response) {
+            public void onResponse(@NotNull Call<EventsResponse> call, @NotNull Response<EventsResponse> response) {
                 if(response.isSuccessful()) {
                     EventsResponse eventsResponse = response.body();
                     List<Event> eventList = eventsResponse.getEvents();
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<EventsResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<EventsResponse> call, @NotNull Throwable t) {
                 showError(true);
             }
         });

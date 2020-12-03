@@ -1,4 +1,4 @@
-package com.example.group04.soccerapp;
+package com.example.group04.soccerapp.api;
 
 import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.EventsResponse;

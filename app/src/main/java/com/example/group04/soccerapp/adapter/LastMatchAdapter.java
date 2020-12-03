@@ -1,4 +1,4 @@
-package com.example.group04.soccerapp;
+package com.example.group04.soccerapp.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.group04.soccerapp.EventActivity;
+import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.model.Event;
 
 import java.util.List;
