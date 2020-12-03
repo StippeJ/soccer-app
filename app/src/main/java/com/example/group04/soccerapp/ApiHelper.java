@@ -46,13 +46,13 @@ public class ApiHelper {
                     ClubDetails cd = cdr.getTeams().get(0);
                     Picasso.get().load(cd.getStrTeamBadge()).into(imageView);
                 } else {
-                    Log.d("MatchdayActivity", "onResponse not successful: " + response.code());
+                    Log.d("ApiHelper", "onResponse not successful: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(@NotNull Call<ClubDetailsResponse> call, @NotNull Throwable t) {
-                Log.d("MatchdayActivity", "onFailure");
+                Log.d("ApiHelper", "onFailure");
             }
 
         }, clubId);
