@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
         error.setVisibility(View.VISIBLE);
         //set visibilities of objects to INVISIBLE
         headline.setVisibility(View.INVISIBLE);
-        recyclerView.setVisibility(View.INVISIBLE);
         bundesligaButton.setVisibility(View.INVISIBLE);
 
         if (onFailure) {
