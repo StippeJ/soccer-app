@@ -77,19 +77,19 @@
                 app:layout_constraintRight_toRightOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/socialIcons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/guideline_vertical"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/spacer">
+                app:layout_constraintBottom_toBottomOf="@id/spacer2">
 
                 <ImageButton
                     android:id="@+id/iconFacebook"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_facebook"
-                    android:layout_marginTop="20dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -181,7 +181,7 @@
                 tools:text="99999"/>
 
             <View
-                android:id="@+id/spacer"
+                android:id="@+id/spacer2"
                 style="@style/Spacer"
                 app:layout_constraintTop_toBottomOf="@id/capacityNumber"
                 app:layout_constraintBottom_toTopOf="@id/descriptionSubheading"
@@ -200,11 +200,13 @@
                 android:id="@+id/clubDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
+                android:justificationMode="inter_word"
                 app:layout_constraintTop_toBottomOf="@id/descriptionSubheading"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="@string/toolsDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

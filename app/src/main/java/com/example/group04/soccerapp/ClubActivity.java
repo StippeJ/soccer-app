@@ -1,9 +1,12 @@
 package com.example.group04.soccerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.text.LineBreaker;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,6 +26,8 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class ClubActivity extends AppCompatActivity {
 
@@ -45,6 +50,9 @@ public class ClubActivity extends AppCompatActivity {
     TextView stadiumHeading;
     TextView capacityHeading;
     TextView descriptionHeading;
+    ConstraintLayout socialIcons;
+    View spacer1;
+    View spacer2;
 
     /**
      * Bind the created views to the layout
@@ -75,6 +83,9 @@ public class ClubActivity extends AppCompatActivity {
         stadiumHeading = findViewById(R.id.stadiumHeadline);
         capacityHeading = findViewById(R.id.capacityHeadline);
         descriptionHeading = findViewById(R.id.descriptionSubheading);
+        socialIcons = findViewById(R.id.socialIcons);
+        spacer1 = findViewById(R.id.spacer1);
+        spacer2 = findViewById(R.id.spacer2);
     }
 
 
@@ -232,6 +243,9 @@ public class ClubActivity extends AppCompatActivity {
         stadiumHeading.setVisibility(View.INVISIBLE);
         capacityHeading.setVisibility(View.INVISIBLE);
         descriptionHeading.setVisibility(View.INVISIBLE);
+        socialIcons.setVisibility(View.INVISIBLE);
+        spacer1.setVisibility(View.INVISIBLE);
+        spacer2.setVisibility(View.INVISIBLE);
 
         if(onStart) {
             error.setText(R.string.getExtraError);
