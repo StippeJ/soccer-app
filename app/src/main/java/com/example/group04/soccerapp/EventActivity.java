@@ -5,16 +5,12 @@ import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.group04.soccerapp.model.ClubDetails;
-import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,8 +20,8 @@ import retrofit2.Response;
 
 public class EventActivity extends AppCompatActivity {
 
-    // SoccerRepo to access API
-    SoccerRepo soccerRepo;
+    // Object to access API
+    ApiHelper apiHelper;
 
     // Event that is currently visible
     Event currentEvent;
@@ -53,7 +49,7 @@ public class EventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-        soccerRepo = new SoccerRepo();
+        apiHelper = new ApiHelper();
 
         eventGroup = findViewById(R.id.eventGroup);
         imageHomeTeam = findViewById(R.id.imageHomeTeam);
@@ -72,7 +68,7 @@ public class EventActivity extends AppCompatActivity {
         if (bundle != null) {
             int eventId = bundle.getInt("eventId");
 
-            soccerRepo.getEventById(new Callback<EventsResponse>() {
+            apiHelper.getSoccerRepo().getEventById(new Callback<EventsResponse>() {
 
                 @Override
                 public void onResponse(@NotNull Call<EventsResponse> call, @NotNull Response<EventsResponse> response) {
@@ -82,8 +78,8 @@ public class EventActivity extends AppCompatActivity {
                         currentEvent = er.getEvents().get(0);
 
                         // Load the two images
-                        loadClubBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
-                        loadClubBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
+                        apiHelper.loadClubBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
+                        apiHelper.loadClubBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
 
                         // Show the result of the current event (if match is finished)
                         if (currentEvent.getStrStatus().equals("Match Finished")) {
@@ -136,34 +132,6 @@ public class EventActivity extends AppCompatActivity {
             intent.putExtra("clubId", currentEvent.getIdAwayTeam());
             startActivity(intent);
         });
-    }
-
-    /**
-     * Load the image of a clubs badge into a specified ImageView.
-     * @param clubId Id of the club, for which the image should be requested from the API
-     * @param imageView ImageView into which the image will be loaded
-     * @author Jan Stippe
-     */
-    private void loadClubBadge(int clubId, ImageView imageView) {
-        soccerRepo.getClubDetails(new Callback<ClubDetailsResponse>() {
-
-            @Override
-            public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
-                if (response.isSuccessful()) {
-                    ClubDetailsResponse cdr = response.body();
-                    ClubDetails cd = cdr.getTeams().get(0);
-                    Picasso.get().load(cd.getStrTeamBadge()).into(imageView);
-                } else {
-                    Log.d("MatchdayActivity", "onResponse not successful: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<ClubDetailsResponse> call, @NotNull Throwable t) {
-                Log.d("MatchdayActivity", "onFailure");
-            }
-
-        }, clubId);
     }
 
     /**
