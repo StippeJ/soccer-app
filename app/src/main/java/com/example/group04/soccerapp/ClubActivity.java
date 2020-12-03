@@ -29,6 +29,9 @@ import retrofit2.Response;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
+/**
+ * @author Tim-Loris Deinert
+ */
 public class ClubActivity extends AppCompatActivity {
 
     SoccerRepo soccerRepo;
@@ -53,6 +56,7 @@ public class ClubActivity extends AppCompatActivity {
     ConstraintLayout socialIcons;
     View spacer1;
     View spacer2;
+
 
     /**
      * Bind the created views to the layout
