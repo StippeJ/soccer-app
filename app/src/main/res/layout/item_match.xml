@@ -79,10 +79,8 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
+            style="@style/RecyclerSpacer"
             android:layout_marginTop="16dp"
-            android:background="#c0c0c0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

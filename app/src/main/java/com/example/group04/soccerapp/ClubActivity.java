@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.text.LineBreaker;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,14 +25,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
-
 /**
  * @author Tim-Loris Deinert
  */
 public class ClubActivity extends AppCompatActivity {
 
-    SoccerRepo soccerRepo;
+    ApiHelper apiHelper;
     //Create Api View variables
     TextView error;
     TextView teamName;
@@ -68,7 +64,7 @@ public class ClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
 
-        soccerRepo = new SoccerRepo();
+        apiHelper = new ApiHelper();
 
         //get needed Views
         error = findViewById(R.id.errorText);
@@ -117,7 +113,7 @@ public class ClubActivity extends AppCompatActivity {
      * @author Tim-Loris Deinert
      */
     public void getClubDetails(int clubID) {
-        soccerRepo.getClubDetails(new Callback<ClubDetailsResponse>() {
+        apiHelper.getSoccerRepo().getClubDetails(new Callback<ClubDetailsResponse>() {
             @Override
             public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
                 if(response.isSuccessful()) {
