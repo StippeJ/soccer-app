@@ -57,7 +57,7 @@ public class EventActivity extends AppCompatActivity {
         eventGroup = findViewById(R.id.eventGroup);
         imageHomeTeam = findViewById(R.id.imageHomeTeam);
         imageAwayTeam = findViewById(R.id.imageAwayTeam);
-        eventResult = findViewById(R.id.matchResult);
+        eventResult = findViewById(R.id.eventResult);
         eventHeadline = findViewById(R.id.eventHeadline);
         eventDate = findViewById(R.id.eventDate);
         eventLocation = findViewById(R.id.eventLocation);
@@ -91,7 +91,7 @@ public class EventActivity extends AppCompatActivity {
                             eventResult.setText("- : -");
                         }
                         eventHeadline.setText(currentEvent.getStrEvent());
-                        eventDate.setText(getDateAndTime());
+                        eventDate.setText(currentEvent.getFormattedDateAndTime());
                         eventLocation.setText(currentEvent.getStrVenue());
                         eventLeague.setText(currentEvent.getStrLeague());
                         eventRound.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
@@ -137,14 +137,4 @@ public class EventActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Get the local date and time of the event in a suitable format
-     * @return Date as string (dd.MM.yyyy, HH:mm)
-     * @author Jan Stippe
-     */
-    private String getDateAndTime() {
-        String[] dateParts = currentEvent.getDateEvent().split("-");
-        String[] timeParts = currentEvent.getStrTime().split(":");
-        return String.format("%s.%s.%s, %s:%s", dateParts[2], dateParts[1], dateParts[0], timeParts[0], timeParts[1]);
-    }
 }

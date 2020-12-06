@@ -43,9 +43,7 @@ public class NextEventAdapter extends RecyclerView.Adapter<NextEventAdapter.Next
             context.startActivity(intent);
         });
 
-        String[] dateParts = event.getDateEvent().split("-");
-        String[] timeParts = event.getStrTime().split(":");
-        holder.dateOfMatch.setText(String.format("%s.%s.%s, %s:%s", dateParts[2], dateParts[1], dateParts[0], timeParts[0], timeParts[1]));
+        holder.dateOfMatch.setText(event.getFormattedDateAndTime());
         holder.homeClub.setText(event.getStrHomeTeam());
         holder.matchResult.setText("- : -");
         holder.awayClub.setText(event.getStrAwayTeam());

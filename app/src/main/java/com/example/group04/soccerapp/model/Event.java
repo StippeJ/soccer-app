@@ -2,6 +2,9 @@ package com.example.group04.soccerapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author Jan Stippe
  */
@@ -32,7 +35,7 @@ public class Event {
     private int intHomeScore;
 
     @SerializedName("strTimestamp")
-    private String strTimestamp;
+    private Date dateTimestamp;
 
     @SerializedName("strAwayTeam")
     private String strAwayTeam;
@@ -79,6 +82,16 @@ public class Event {
     @SerializedName("strStatus")
     private String strStatus;
 
+    /**
+     * Get the local date and time of the event in a suitable format
+     * @return Date as string (dd.MM.yyyy, HH:mm)
+     * @author Jan Stippe
+     */
+    public String getFormattedDateAndTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
+        return dateFormat.format(getDateTimestamp());
+    }
+
     public String getStrOfficial() {
         return strOfficial;
     }
@@ -111,8 +124,8 @@ public class Event {
         return dateEvent;
     }
 
-    public String getStrTimestamp() {
-        return strTimestamp;
+    public Date getDateTimestamp() {
+        return dateTimestamp;
     }
 
     public String getStrAwayTeam() {

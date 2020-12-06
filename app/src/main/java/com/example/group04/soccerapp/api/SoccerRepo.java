@@ -5,6 +5,7 @@ import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.EventsResponse;
 import com.example.group04.soccerapp.model.TableResponse;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -22,7 +23,9 @@ public class SoccerRepo {
     private final int bundesligaId = 4331;
 
     public SoccerRepo() {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssX")
+                .create();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
