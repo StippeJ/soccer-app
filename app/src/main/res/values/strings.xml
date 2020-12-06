@@ -24,4 +24,6 @@
     <string name="eventRound">Round:</string>
     <string name="newsText">News</string>
     <string name="bundesligaButtonText">To the Bundesliga</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
