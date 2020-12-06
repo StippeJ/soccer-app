@@ -39,6 +39,7 @@ public class LastMatchAdapter extends RecyclerView.Adapter<LastMatchAdapter.Last
     @Override
     public void onBindViewHolder(@NonNull LastMatchViewHolder holder, int position) {
         Event event = eventList.get(position);
+
         int eventID = event.getIdEvent();
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();

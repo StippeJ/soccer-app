@@ -2,65 +2,84 @@ package com.example.group04.soccerapp.ui.overview;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.group04.soccerapp.R;
+import com.example.group04.soccerapp.adapter.NextEventAdapter;
+import com.example.group04.soccerapp.adapter.TableAdapter;
+import com.example.group04.soccerapp.api.ApiHelper;
+import com.example.group04.soccerapp.model.ClubTableData;
+import com.example.group04.soccerapp.model.Event;
+import com.example.group04.soccerapp.model.EventsResponse;
+import com.example.group04.soccerapp.model.TableResponse;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link TableFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * @author André Bautz
  */
 public class TableFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TableFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TableFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TableFragment newInstance(String param1, String param2) {
-        TableFragment fragment = new TableFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+    public static NextEventsFragment newInstance(int index) {
+        NextEventsFragment fragment = new NextEventsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ARG_SECTION_NUMBER, index);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_table, container, false);
+        View view = inflater.inflate(R.layout.fragment_table, container, false);
+
+        ApiHelper apiHelper = new ApiHelper();
+        int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+        String actualSeason = actualYear + "-" + ++actualYear;
+
+        apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {
+            @Override
+            public void onResponse(Call<TableResponse> call, Response<TableResponse> response) {
+                if(response.isSuccessful()) {
+                    TableResponse tableResponse = response.body();
+                    List<ClubTableData> tableList = tableResponse.getTable();
+                    RecyclerView tableRecyclerView = view.findViewById(R.id.tableRecyclerView);
+                    TableAdapter tableAdapter = new TableAdapter(tableList);
+                    tableRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false));
+                    tableRecyclerView.setAdapter(tableAdapter);
+                } else {
+                    Log.d("TableFragment", "onResponse not successfull");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TableResponse> call, Throwable t) {
+                Log.d("TableFragment", "onFailure");
+            }
+        }, actualSeason);
+
+        return view;
     }
 }
