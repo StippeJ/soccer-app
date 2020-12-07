@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends BaseActivity {
 
     // Object to access API
     ApiHelper apiHelper;

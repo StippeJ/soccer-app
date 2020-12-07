@@ -13,7 +13,7 @@ import android.view.View;
 
 import com.example.group04.soccerapp.ui.overview.SectionsPagerAdapter;
 
-public class OverviewActivity extends AppCompatActivity {
+public class OverviewActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,6 +24,16 @@
     <string name="eventRound">Round:</string>
     <string name="newsText">News</string>
     <string name="bundesligaButtonText">To the Bundesliga</string>
+    <string name="moreIcon">More options </string>
+    <string name="aboutIcon">Infos about the app</string>
+    <string name="bugIcon">Report a bug</string>
+    <string name="nightModeIcon">Toggle night mode on/off</string>
+    <string name="errorNoMailClients">There are no mail clients installed!</string>
+    <string name="toastAbout"><b>About this App:</b>\n\n<u>App creator:</u>\n\t- André Bautz\n\t- Tim-Loris Deinert\n\t- Jan Stippe\n\n<u>Version:</u> v.1.0</string>
+    <string name="modeNightText">change to day mode</string>
+    <string name="modeDayText">change to night mode</string>
+    <string name="toastModeChangedDay">Changed app theme to day mode</string>
+    <string name="toastModeChangedNight">Changed app theme to night mode</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

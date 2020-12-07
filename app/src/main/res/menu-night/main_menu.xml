@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--author: Tim-Loris Deinert-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainMenu">
+    <item
+        android:id="@+id/menuItemMore"
+        android:icon="@drawable/ic_menu_icon_more"
+        android:title="@string/moreIcon"
+        app:tooltipText="@string/moreIcon"
+        app:showAsAction="always">
+        <!-- submenu -->
+        <menu>
+            <item
+                android:id="@+id/menuItemAbout"
+                android:title="@string/aboutIcon"
+                android:icon="@drawable/ic_menu_icon_about"
+                app:iconTint="@color/primaryTextColor"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/menuItemDisplayMode"
+                android:title="@string/modeNightText"
+                android:icon="@drawable/ic_menu_icon_day"
+                app:iconTint="@color/primaryTextColor"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/menuItemBugReport"
+                android:title="@string/bugIcon"
+                android:icon="@drawable/ic_menu_icon_bug"
+                app:iconTint="@color/primaryTextColor"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+</menu>

@@ -26,8 +26,6 @@
     <style name="Theme.SoccerApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!--author: Tim-Loris Deinert-->
-    <!--use of marquee function: use "android:singleLine="true"" in your TextView Layout and
-        it should scroll automatically through the Text if the Text is longer than the View-->
     <style name="GeneralTextView" parent="Widget.AppCompat.TextView">
         <item name="android:ellipsize">end</item>
     </style>
@@ -67,6 +65,7 @@
         <item name="android:background">@color/primaryColor</item>
     </style>
 
+    <!--author: Tim-Loris Deinert-->
     <style name="RecyclerSpacer" parent="Spacer">
         <item name="android:layout_height">1dp</item>
     </style>

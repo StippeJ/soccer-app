@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,7 +30,7 @@ import retrofit2.Response;
 /**
  * @author Tim-Loris Deinert
  */
-public class ClubActivity extends AppCompatActivity {
+public class ClubActivity extends BaseActivity {
 
     ApiHelper apiHelper;
     //Create Api View variables
@@ -88,7 +89,6 @@ public class ClubActivity extends AppCompatActivity {
         spacer1 = findViewById(R.id.spacer1);
         spacer2 = findViewById(R.id.spacer2);
     }
-
 
     /**
      * Get the explicit intent extra that contains the requested team id and load the provided Data into the given Views
