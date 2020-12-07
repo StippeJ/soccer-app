@@ -1,4 +1,4 @@
-package com.example.group04.soccerapp;
+package com.example.group04.soccerapp.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.group04.soccerapp.EventActivity;
+import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.model.Event;
 
 import java.util.List;
@@ -45,9 +47,7 @@ public class LastMatchAdapter extends RecyclerView.Adapter<LastMatchAdapter.Last
             context.startActivity(openMatchdayActivity);
         });
 
-        String[] dateParts = event.getDateEvent().split("-");
-        String[] timeParts = event.getStrTime().split(":");
-        holder.dateOfMatch.setText(String.format("%s.%s.%s, %s:%s", dateParts[2], dateParts[1], dateParts[0], timeParts[0], timeParts[1]));
+        holder.dateOfMatch.setText(event.getFormattedDateAndTime());
         holder.homeClub.setText(event.getStrHomeTeam());
         holder.matchResult.setText(String.format("%d : %d", event.getIntHomeScore(), event.getIntAwayScore()));
         holder.awayClub.setText(event.getStrAwayTeam());

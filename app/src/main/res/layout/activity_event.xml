@@ -42,11 +42,11 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toBottomOf="@+id/eventHeadline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/matchResult"
+            app:layout_constraintEnd_toStartOf="@+id/eventResult"
             android:contentDescription="@string/clubImageDescription"/>
 
         <TextView
-            android:id="@+id/matchResult"
+            android:id="@+id/eventResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -66,7 +66,7 @@
             app:layout_constraintWidth_percent="0.2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
-            app:layout_constraintStart_toEndOf="@+id/matchResult"
+            app:layout_constraintStart_toEndOf="@+id/eventResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
             android:contentDescription="@string/clubImageDescription"/>

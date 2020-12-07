@@ -20,7 +20,7 @@ public class ClubTableData {
 	private int goalsAgainst;
 
 	@SerializedName("teamid")
-	private String teamId;
+	private int teamId;
 
 	@SerializedName("goalsdifference")
 	private int goalsDifference;
@@ -53,7 +53,7 @@ public class ClubTableData {
 		return goalsAgainst;
 	}
 
-	public String getTeamId(){
+	public int getTeamId(){
 		return teamId;
 	}
 

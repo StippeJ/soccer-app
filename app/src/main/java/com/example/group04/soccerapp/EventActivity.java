@@ -10,10 +10,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +58,7 @@ public class EventActivity extends BaseActivity {
         eventGroup = findViewById(R.id.eventGroup);
         imageHomeTeam = findViewById(R.id.imageHomeTeam);
         imageAwayTeam = findViewById(R.id.imageAwayTeam);
-        eventResult = findViewById(R.id.matchResult);
+        eventResult = findViewById(R.id.eventResult);
         eventHeadline = findViewById(R.id.eventHeadline);
         eventDate = findViewById(R.id.eventDate);
         eventLocation = findViewById(R.id.eventLocation);
@@ -84,15 +87,15 @@ public class EventActivity extends BaseActivity {
 
                         // Show the result of the current event (if match is finished)
                         if (currentEvent.getStrStatus().equals("Match Finished")) {
-                            eventResult.setText(String.format("%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
+                            eventResult.setText(String.format(Locale.getDefault(),"%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
                         } else {
                             eventResult.setText("- : -");
                         }
                         eventHeadline.setText(currentEvent.getStrEvent());
-                        eventDate.setText(getDateAndTime());
+                        eventDate.setText(currentEvent.getFormattedDateAndTime());
                         eventLocation.setText(currentEvent.getStrVenue());
                         eventLeague.setText(currentEvent.getStrLeague());
-                        eventRound.setText(Integer.toString(currentEvent.getIntRound()));
+                        eventRound.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
                     } else {
                         // Show error message
                         eventGroup.setVisibility(View.INVISIBLE);
@@ -135,14 +138,4 @@ public class EventActivity extends BaseActivity {
         });
     }
 
-    /**
-     * Get the local date and time of the event in a suitable format
-     * @return Date as string (dd.MM.yyyy, HH:mm)
-     * @author Jan Stippe
-     */
-    private String getDateAndTime() {
-        String[] dateParts = currentEvent.getDateEvent().split("-");
-        String[] timeParts = currentEvent.getStrTime().split(":");
-        return String.format("%s.%s.%s, %s:%s", dateParts[2], dateParts[1], dateParts[0], timeParts[0], timeParts[1]);
-    }
 }
