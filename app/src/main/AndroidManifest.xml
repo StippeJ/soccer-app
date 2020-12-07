@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoccerApp">
         <activity android:name=".BaseActivity" />
+        <activity android:name=".BetActivity" />
         <activity
             android:name=".OverviewActivity"
             android:label="@string/title_activity_overview"
