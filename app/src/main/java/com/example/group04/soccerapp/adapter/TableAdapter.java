@@ -19,6 +19,8 @@ import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.ClubTableData;
 import com.example.group04.soccerapp.model.TableResponse;
 
+import org.w3c.dom.Text;
+
 import java.time.temporal.Temporal;
 import java.util.Calendar;
 import java.util.List;
@@ -78,7 +80,16 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         }, actualSeason);
 
         holder.clubName.setText(clubTableData.getName());
-        holder.winsAndLosses.setText(clubTableData.getWin() + " - " + clubTableData.getDraw() + " - " + clubTableData.getLoss());
+
+        String tempString;
+
+        tempString = holder.itemView.getContext().getString(R.string.tableWinsText, clubTableData.getWin());
+        holder.wins.setText(tempString);
+        tempString = holder.itemView.getContext().getString(R.string.tableDrawText, clubTableData.getDraw());
+        holder.draw.setText(tempString);
+        tempString = holder.itemView.getContext().getString(R.string.tableLossText, clubTableData.getLoss());
+        holder.loss.setText(tempString);
+
         holder.clubPoints.setText(Integer.toString(clubTableData.getWin() * 3 + clubTableData.getDraw()));
     }
 
@@ -91,7 +102,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         TextView tablePosition;
         ImageView clubIcon;
         TextView clubName;
-        TextView winsAndLosses;
+        TextView wins;
+        TextView draw;
+        TextView loss;
         TextView clubPoints;
 
         public TableViewHolder(@NonNull View itemView) {
@@ -100,7 +113,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             tablePosition = itemView.findViewById(R.id.tablePosition);
             clubIcon = itemView.findViewById(R.id.tableClubIcon);
             clubName = itemView.findViewById(R.id.tableClubName);
-            winsAndLosses = itemView.findViewById(R.id.tableWinsAndLosses);
+            wins = itemView.findViewById(R.id.tableWins);
+            draw = itemView.findViewById(R.id.tableDraws);
+            loss = itemView.findViewById(R.id.tableLosses);
             clubPoints = itemView.findViewById(R.id.tablePoints);
         }
     }

@@ -36,4 +36,7 @@
     <string name="toastModeChangedNight">Changed app theme to night mode</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tableWinsText">Wins: %d</string>
+    <string name="tableDrawText">Draws: %d</string>
+    <string name="tableLossText">Losses: %d</string>
 </resources>

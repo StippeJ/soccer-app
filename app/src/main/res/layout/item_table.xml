@@ -32,21 +32,20 @@
             android:id="@+id/tableClubName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="Filler Team Name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vertical"
-            app:layout_constraintHorizontal_bias="0.64"
-            app:layout_constraintStart_toStartOf="@+id/guideline1_vertical"
+            app:layout_constraintHorizontal_bias="0.31"
+            app:layout_constraintStart_toEndOf="@+id/tableClubIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/tableClubIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tableClubName"
-            app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="@+id/guideline1_vertical"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -56,16 +55,34 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.73" />
+            app:layout_constraintGuide_percent="0.67" />
 
         <TextView
-            android:id="@+id/tableWinsAndLosses"
+            android:id="@+id/tableWins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 - 1 - 5"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
+            android:text="Wins: "
             app:layout_constraintStart_toStartOf="@+id/guideline2_vertical"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tableDraws"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Draws: "
+            app:layout_constraintStart_toStartOf="@+id/guideline2_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tableWins" />
+
+        <TextView
+            android:id="@+id/tableLosses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Losses: "
+            app:layout_constraintStart_toStartOf="@+id/guideline2_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tableDraws" />
 
         <TextView
             android:id="@+id/tablePoints"
@@ -80,11 +97,12 @@
         <View
             android:id="@+id/view"
             style="@style/RecyclerSpacer"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableClubIcon"
-            tools:layout_editor_absoluteY="51dp" />
+            app:layout_constraintTop_toBottomOf="@+id/tableLosses" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
