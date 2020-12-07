@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,9 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group04.soccerapp.EventActivity;
 import com.example.group04.soccerapp.R;
+import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.Event;
+import com.example.group04.soccerapp.model.EventsResponse;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @author André Bautz
@@ -50,6 +57,23 @@ public class LastMatchAdapter extends RecyclerView.Adapter<LastMatchAdapter.Last
 
         holder.dateOfMatch.setText(event.getFormattedDateAndTime());
         holder.homeClub.setText(event.getStrHomeTeam());
+
+        ApiHelper apiHelper = new ApiHelper();
+        apiHelper.getSoccerRepo().getLastEventsOfLeague(new Callback<EventsResponse>() {
+            @Override
+            public void onResponse(Call<EventsResponse> call, Response<EventsResponse> response) {
+                if(response.isSuccessful()) {
+                    apiHelper.loadClubBadge(event.getIdHomeTeam(), holder.iconHomeClub);
+                    apiHelper.loadClubBadge(event.getIdAwayTeam(), holder.iconAwayClub);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EventsResponse> call, Throwable t) {
+
+            }
+        });
+
         holder.matchResult.setText(String.format("%d : %d", event.getIntHomeScore(), event.getIntAwayScore()));
         holder.awayClub.setText(event.getStrAwayTeam());
     }
@@ -62,16 +86,20 @@ public class LastMatchAdapter extends RecyclerView.Adapter<LastMatchAdapter.Last
     public static class LastMatchViewHolder extends RecyclerView.ViewHolder {
         TextView dateOfMatch;
         TextView homeClub;
+        ImageView iconHomeClub;
         TextView matchResult;
         TextView awayClub;
+        ImageView iconAwayClub;
 
         public LastMatchViewHolder(@NonNull View itemview) {
             super(itemview);
 
             dateOfMatch = itemview.findViewById(R.id.matchDate);
             homeClub = itemview.findViewById(R.id.homeClub);
+            iconHomeClub = itemview.findViewById(R.id.imageHomeTeamMain);
             matchResult = itemview.findViewById(R.id.matchEndResult);
             awayClub = itemview.findViewById(R.id.awayClub);
+            iconAwayClub = itemview.findViewById(R.id.imageAwayTeamMain);
         }
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.group04.soccerapp.adapter.LastMatchAdapter;
+import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.api.SoccerRepo;
 import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;

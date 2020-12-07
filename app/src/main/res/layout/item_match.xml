@@ -7,8 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="115dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
@@ -16,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.30" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <TextView
             android:id="@+id/matchDate"
@@ -35,56 +37,76 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.62" />
+            app:layout_constraintGuide_percent="0.47" />
 
         <TextView
             android:id="@+id/homeClub"
+            style="@style/GeneralTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Filler Team #1"
+            android:layout_marginStart="8dp"
             android:gravity="right"
             android:singleLine="true"
-            style="@style/GeneralTextView"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2_vertical"
-            app:layout_constraintStart_toStartOf="@+id/guideline1_vertical"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Filler Team #1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageHomeTeamMain"
+            app:layout_constraintTop_toBottomOf="@+id/matchDate"
+            app:layout_constraintVertical_bias="0.64" />
 
         <TextView
             android:id="@+id/matchEndResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:text="0:0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2_vertical"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/matchDate"
+            app:layout_constraintVertical_bias="0.64" />
 
         <TextView
             android:id="@+id/awayClub"
+            style="@style/GeneralTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:singleLine="true"
-            style="@style/GeneralTextView"
-            android:text="Filler Team #2"
+            android:layout_marginEnd="8dp"
             android:gravity="left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/matchEndResult"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:singleLine="true"
+            android:text="Filler Team #2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageAwayTeamMain"
+            app:layout_constraintTop_toBottomOf="@+id/matchDate"
+            app:layout_constraintVertical_bias="0.64" />
 
         <View
             android:id="@+id/view"
             style="@style/RecyclerSpacer"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeClub" />
+            app:layout_constraintTop_toBottomOf="@+id/imageHomeTeamMain" />
+
+        <ImageView
+            android:id="@+id/imageHomeTeamMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/matchDate"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageAwayTeamMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/matchDate"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
