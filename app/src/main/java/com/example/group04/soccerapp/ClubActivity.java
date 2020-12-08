@@ -1,17 +1,16 @@
 package com.example.group04.soccerapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.group04.soccerapp.api.ApiHelper;
@@ -34,6 +33,8 @@ public class ClubActivity extends BaseActivity {
 
     ApiHelper apiHelper;
     //Create Api View variables
+    Group contentGroup;
+    ProgressBar progressBar;
     TextView error;
     TextView teamName;
     ImageView teamBadge;
@@ -69,7 +70,9 @@ public class ClubActivity extends BaseActivity {
         apiHelper = new ApiHelper();
 
         //get needed Views
-        error = findViewById(R.id.errorText);
+        contentGroup = findViewById(R.id.clubContentGroup);
+        progressBar = findViewById(R.id.clubProgressSpinner);
+        error = findViewById(R.id.clubErrorText);
         teamName = findViewById(R.id.clubName);
         teamBadge = findViewById(R.id.clubImage);
         iconFb = findViewById(R.id.iconFacebook);
@@ -114,6 +117,9 @@ public class ClubActivity extends BaseActivity {
      * @author Tim-Loris Deinert
      */
     public void getClubDetails(int clubID) {
+        contentGroup.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
         apiHelper.getSoccerRepo().getClubDetails(new Callback<ClubDetailsResponse>() {
             @Override
             public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
@@ -121,16 +127,15 @@ public class ClubActivity extends BaseActivity {
                     ClubDetailsResponse cdRes = response.body();
                     ClubDetails cd = cdRes.getTeams().get(0);
                     fillViews(cd);
-                    Log.d("ClubActivity", "onResponse successful: " + cd.getStrAlternate());
+                    contentGroup.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
                 } else {
                     showError(false, false);
-                    Log.d("ClubActivity", "onResponse not successful: " + response.code());
                 }
             }
 
             public void onFailure(@NotNull Call<ClubDetailsResponse> call, @NotNull Throwable t) {
                 showError(false, true);
-                Log.d("ClubActivity", "onFailure");
             }
         }, clubID);
     }
@@ -239,14 +244,8 @@ public class ClubActivity extends BaseActivity {
         //set error message visibility
         error.setVisibility(View.VISIBLE);
         //set headline visibilities
-        infoHeading.setVisibility(View.INVISIBLE);
-        foundedHeading.setVisibility(View.INVISIBLE);
-        stadiumHeading.setVisibility(View.INVISIBLE);
-        capacityHeading.setVisibility(View.INVISIBLE);
-        descriptionHeading.setVisibility(View.INVISIBLE);
-        socialIcons.setVisibility(View.INVISIBLE);
-        spacer1.setVisibility(View.INVISIBLE);
-        spacer2.setVisibility(View.INVISIBLE);
+        contentGroup.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
 
         if(onStart) {
             error.setText(R.string.getExtraError);
