@@ -1,6 +1,5 @@
 package com.example.group04.soccerapp.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,15 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group04.soccerapp.ClubActivity;
-import com.example.group04.soccerapp.EventActivity;
 import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.ClubTableData;
 import com.example.group04.soccerapp.model.TableResponse;
 
-import org.w3c.dom.Text;
+import org.jetbrains.annotations.NotNull;
 
-import java.time.temporal.Temporal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -67,14 +64,14 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {
             @Override
-            public void onResponse(Call<TableResponse> call, Response<TableResponse> response) {
+            public void onResponse(@NotNull Call<TableResponse> call, @NotNull Response<TableResponse> response) {
                 if(response.isSuccessful()) {
                     apiHelper.loadClubBadge(clubID, holder.clubIcon);
                 }
             }
 
             @Override
-            public void onFailure(Call<TableResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<TableResponse> call, @NotNull Throwable t) {
 
             }
         }, actualSeason);
@@ -96,6 +93,11 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
     @Override
     public int getItemCount() {
         return tableList.size();
+    }
+
+    public void updateData(List<ClubTableData> clubTableData) {
+        this.tableList = clubTableData;
+        notifyDataSetChanged();
     }
 
     public static class TableViewHolder extends RecyclerView.ViewHolder {

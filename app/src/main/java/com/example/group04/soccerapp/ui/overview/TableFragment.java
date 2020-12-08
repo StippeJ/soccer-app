@@ -3,26 +3,25 @@ package com.example.group04.soccerapp.ui.overview;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.group04.soccerapp.R;
-import com.example.group04.soccerapp.adapter.NextEventAdapter;
 import com.example.group04.soccerapp.adapter.TableAdapter;
 import com.example.group04.soccerapp.api.ApiHelper;
-import com.example.group04.soccerapp.model.ClubTableData;
-import com.example.group04.soccerapp.model.Event;
-import com.example.group04.soccerapp.model.EventsResponse;
 import com.example.group04.soccerapp.model.TableResponse;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -36,6 +35,7 @@ import retrofit2.Response;
 public class TableFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    TableAdapter tableAdapter;
 
     public static NextEventsFragment newInstance(int index) {
         NextEventsFragment fragment = new NextEventsFragment();
@@ -55,31 +55,50 @@ public class TableFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
+        RecyclerView recyclerView = view.findViewById(R.id.tableRecyclerView);
+        ProgressBar progressBar = view.findViewById(R.id.tableProgressBar);
+        TextView errorTextView = view.findViewById(R.id.tableError);
+
+        recyclerView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
         ApiHelper apiHelper = new ApiHelper();
         int actualYear = Calendar.getInstance().get(Calendar.YEAR);
         String actualSeason = actualYear + "-" + ++actualYear;
 
         apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {
             @Override
-            public void onResponse(Call<TableResponse> call, Response<TableResponse> response) {
+            public void onResponse(@NotNull Call<TableResponse> call, @NotNull Response<TableResponse> response) {
                 if(response.isSuccessful()) {
                     TableResponse tableResponse = response.body();
-                    List<ClubTableData> tableList = tableResponse.getTable();
-                    RecyclerView tableRecyclerView = view.findViewById(R.id.tableRecyclerView);
-                    TableAdapter tableAdapter = new TableAdapter(tableList);
-                    tableRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false));
-                    tableRecyclerView.setAdapter(tableAdapter);
+                    tableAdapter.updateData(tableResponse.getTable());
+                    progressBar.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
                 } else {
-                    Log.d("TableFragment", "onResponse not successfull");
+                    errorTextView.setText(getString(R.string.apiResponseError));
+                    progressBar.setVisibility(View.INVISIBLE);
+                    errorTextView.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
-            public void onFailure(Call<TableResponse> call, Throwable t) {
-                Log.d("TableFragment", "onFailure");
+            public void onFailure(@NotNull Call<TableResponse> call, @NotNull Throwable t) {
+                errorTextView.setText(getString(R.string.apiErrorOnFailure));
+                progressBar.setVisibility(View.INVISIBLE);
+                errorTextView.setVisibility(View.VISIBLE);
             }
         }, actualSeason);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView tableRecyclerView = view.findViewById(R.id.tableRecyclerView);
+        tableRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false));
+        tableAdapter = new TableAdapter(new ArrayList<>());
+        tableRecyclerView.setAdapter(tableAdapter);
     }
 }
