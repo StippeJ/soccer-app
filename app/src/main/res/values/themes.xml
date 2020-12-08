@@ -32,7 +32,7 @@
 
     <!--author: Tim-Loris Deinert-->
     <style name="GeneralButton" parent="Widget.AppCompat.Button">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:background">@color/primaryColor</item>
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
@@ -41,6 +41,10 @@
     <style name="Headline" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">25sp</item>
         <item name="android:gravity">center</item>
@@ -56,6 +60,7 @@
     <style name="Error" parent="Subheading">
         <item name="android:textColor">@color/primaryColor</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_margin">16dp</item>
     </style>
 
     <!--author: Tim-Loris Deinert-->
@@ -65,9 +70,11 @@
         <item name="android:background">@color/primaryColor</item>
     </style>
 
-    <!--author: Tim-Loris Deinert-->
-    <style name="RecyclerSpacer" parent="Spacer">
-        <item name="android:layout_height">1dp</item>
+    <!-- author: Jan Stippe -->
+    <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">invisible</item>
     </style>
-
 </resources>
