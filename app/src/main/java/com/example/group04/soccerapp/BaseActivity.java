@@ -16,6 +16,8 @@ import android.widget.Toast;
 public class BaseActivity extends AppCompatActivity {
     private static final int DISPLAY_MODE_NIGHT = 1;
     private static final int DISPLAY_MODE_DAY = 0;
+    protected static final String SHARED_PREFS = "sharedPrefs";
+    protected static final String BET_LIST = "betList";
 
     /**
      * Create/inflate Options menu

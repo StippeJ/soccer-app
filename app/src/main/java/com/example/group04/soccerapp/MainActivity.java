@@ -1,26 +1,23 @@
 package com.example.group04.soccerapp;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.group04.soccerapp.adapter.LastMatchAdapter;
-import com.example.group04.soccerapp.api.ApiHelper;
+import com.example.group04.soccerapp.adapter.EventAdapter;
 import com.example.group04.soccerapp.api.SoccerRepo;
-import com.example.group04.soccerapp.model.Event;
 import com.example.group04.soccerapp.model.EventsResponse;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,13 +29,12 @@ import retrofit2.Response;
 public class MainActivity extends BaseActivity {
 
     // Variables needed for getting the objects from the api
-    Context context;
     SoccerRepo soccerRepo;
+    EventAdapter eventAdapter;
     // Variables for the objects in the layout
     TextView error;
     TextView headline;
     Button bundesligaButton;
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +42,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         // Setting the values of the variables
-        context = this;
         soccerRepo = new SoccerRepo();
         error = findViewById(R.id.errorTextMain);
         headline = findViewById(R.id.newsHeadline);
@@ -62,6 +57,14 @@ public class MainActivity extends BaseActivity {
 
         // Method for opening a new activity by clicking a button
         openOverViewActivity();
+        setRecyclerViewContent();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getLastMatchesFromApi();
     }
 
     /**
@@ -69,20 +72,28 @@ public class MainActivity extends BaseActivity {
      * @author André Bautz
      */
     public void getLastMatchesFromApi() {
+        Group contentGroup = findViewById(R.id.mainContentGroup);
+        ProgressBar progressBar = findViewById(R.id.mainProgressSpinner);
+        contentGroup.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
         soccerRepo.getLastEventsOfLeague(new Callback<EventsResponse>() {
             @Override
             public void onResponse(@NotNull Call<EventsResponse> call, @NotNull Response<EventsResponse> response) {
                 if(response.isSuccessful()) {
                     EventsResponse eventsResponse = response.body();
-                    List<Event> eventList = eventsResponse.getEvents();
-                    setRecyclerViewContent(eventList, context);
+                    eventAdapter.updateData(eventsResponse.getEvents());
+                    progressBar.setVisibility(View.INVISIBLE);
+                    contentGroup.setVisibility(View.VISIBLE);
                 }else {
+                    progressBar.setVisibility(View.INVISIBLE);
                     showError(false);
                 }
             }
 
             @Override
             public void onFailure(@NotNull Call<EventsResponse> call, @NotNull Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
                 showError(true);
             }
         });
@@ -90,17 +101,13 @@ public class MainActivity extends BaseActivity {
 
     /**
      * This method is setting the content from the api into the RecyclerView
-     * @param eventList is the complete list of all the recent events
-     * @param context is the value of the context of the Activity
      * @author André Bautz
      */
-    public void setRecyclerViewContent(List<Event> eventList ,Context context) {
-        if(!eventList.isEmpty()) {
-            recyclerView = findViewById(R.id.lastMatchResults);
-            LastMatchAdapter lastMatchAdapter = new LastMatchAdapter(eventList);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-            recyclerView.setAdapter(lastMatchAdapter);
-        }
+    public void setRecyclerViewContent() {
+        RecyclerView recyclerView = findViewById(R.id.lastMatchResults);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
+        eventAdapter = new EventAdapter(new ArrayList<>(), EventActivity.class);
+        recyclerView.setAdapter(eventAdapter);
     }
 
     /**
