@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Jan Stippe
@@ -32,7 +33,7 @@ public class Event {
     private int idHomeTeam;
 
     @SerializedName("intHomeScore")
-    private int intHomeScore;
+    private Integer intHomeScore;
 
     @SerializedName("strTimestamp")
     private Date dateTimestamp;
@@ -77,7 +78,7 @@ public class Event {
     private String strLeague;
 
     @SerializedName("intAwayScore")
-    private int intAwayScore;
+    private Integer intAwayScore;
 
     @SerializedName("strStatus")
     private String strStatus;
@@ -88,7 +89,7 @@ public class Event {
      * @author Jan Stippe
      */
     public String getFormattedDateAndTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault());
         return dateFormat.format(getDateTimestamp());
     }
 
@@ -116,7 +117,7 @@ public class Event {
         return idHomeTeam;
     }
 
-    public int getIntHomeScore() {
+    public Integer getIntHomeScore() {
         return intHomeScore;
     }
 
@@ -180,7 +181,7 @@ public class Event {
         return strLeague;
     }
 
-    public int getIntAwayScore() {
+    public Integer getIntAwayScore() {
         return intAwayScore;
     }
 
