@@ -153,6 +153,7 @@ public class BetActivity extends BaseActivity {
     /**
      * Get bets from SharedPreferences
      * @return Saved bets in a BetList-object
+     * @author Jan Stippe
      */
     private BetList getBets() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
@@ -165,6 +166,7 @@ public class BetActivity extends BaseActivity {
 
     /**
      * Save a bet to the SharedPreferences
+     * @author Jan Stippe
      */
     private void saveBet() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
