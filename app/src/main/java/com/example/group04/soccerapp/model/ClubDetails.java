@@ -10,8 +10,8 @@ public class ClubDetails {
 	@SerializedName("idTeam")
 	private int idTeam;
 
-	@SerializedName("strAlternate")
-	private String strAlternate;
+	@SerializedName("strTeam")
+	private String strTeam;
 
 	@SerializedName("strTeamBadge")
 	private String strTeamBadge;
@@ -47,8 +47,8 @@ public class ClubDetails {
 		return idTeam;
 	}
 
-	public String getStrAlternate(){
-		return strAlternate;
+	public String getStrTeam(){
+		return strTeam;
 	}
 
 	public String getStrTeamBadge(){

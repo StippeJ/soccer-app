@@ -147,7 +147,7 @@ public class ClubActivity extends BaseActivity {
      */
     public void fillViews(ClubDetails cd) {
         //Fill the Views with the API Data
-        teamName.setText(cd.getStrAlternate());
+        teamName.setText(cd.getStrTeam());
         Picasso.get().load(cd.getStrTeamBadge()).into(teamBadge);
         foundedYear.setText(String.valueOf(cd.getIntFormedYear()));
         stadiumName.setText(cd.getStrStadium());
