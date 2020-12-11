@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group04.soccerapp.EventActivity;
@@ -51,8 +49,10 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
     public BetAdapter(Context context) {
         this.context = context;
         this.betList = getBets();
-//        betList.add(new Bet(1019606, 3, 1));
-//        betList.add(new Bet(1019606, 1, 3));
+        betList.add(new Bet(1019606, 3, 1));    // both wrong
+        betList.add(new Bet(1019606, 1, 3));    // correct
+        betList.add(new Bet(1019606, 1, 1));    // home correct, away incorrect
+        betList.add(new Bet(1019606, 3, 3));    // home incorrect, away correct
     }
 
     @NonNull
@@ -83,13 +83,20 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
                     EventsResponse er = response.body();
                     Event event = er.getEvents().get(0);
 
-                    // Check whether bet was correct or not
-                    if (event.getStrStatus().equals("Match Finished")) {
-                        if (bet.getScoreHome() == event.getIntHomeScore()
-                                && bet.getScoreAway() == event.getIntAwayScore()) {
-                            holder.cardView.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.betCorrect));
+                    // Check if a result for the match is available
+                    if (event.getIntAwayScore() != null && event.getIntHomeScore() != null) {
+                        // Compare the score of the home team to the bet and set an according icon
+                        if (bet.getScoreHome() == event.getIntHomeScore()) {
+                            holder.imageBetHomeCorrect.setVisibility(View.VISIBLE);
                         } else {
-                            holder.cardView.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.betFalse));
+                            holder.imageBetHomeIncorrect.setVisibility(View.VISIBLE);
+                        }
+
+                        // Compare the score of the away team to the bet and set an according icon
+                        if (bet.getScoreAway() == event.getIntAwayScore()) {
+                            holder.imageBetAwayCorrect.setVisibility(View.VISIBLE);
+                        } else {
+                            holder.imageBetAwayIncorrect.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -165,24 +172,30 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
 
     public static class BetViewHolder extends RecyclerView.ViewHolder {
 
-        CardView cardView;
         TextView dateOfMatch;
         TextView homeClub;
         TextView matchResult;
         TextView awayClub;
         ImageView imageHomeTeam;
         ImageView imageAwayTeam;
+        ImageView imageBetHomeCorrect;
+        ImageView imageBetHomeIncorrect;
+        ImageView imageBetAwayCorrect;
+        ImageView imageBetAwayIncorrect;
 
         public BetViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            cardView = itemView.findViewById(R.id.eventCardView);
             dateOfMatch = itemView.findViewById(R.id.matchDate);
             homeClub = itemView.findViewById(R.id.homeClub);
             matchResult = itemView.findViewById(R.id.matchEndResult);
             awayClub = itemView.findViewById(R.id.awayClub);
             imageHomeTeam = itemView.findViewById(R.id.imageHomeTeamMain);
             imageAwayTeam = itemView.findViewById(R.id.imageAwayTeamMain);
+            imageBetHomeCorrect = itemView.findViewById(R.id.betHomeCorrect);
+            imageBetHomeIncorrect = itemView.findViewById(R.id.betHomeIncorrect);
+            imageBetAwayCorrect = itemView.findViewById(R.id.betAwayCorrect);
+            imageBetAwayIncorrect = itemView.findViewById(R.id.betAwayIncorrect);
         }
     }
 
