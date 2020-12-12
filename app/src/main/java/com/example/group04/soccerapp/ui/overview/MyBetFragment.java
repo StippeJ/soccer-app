@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,16 +36,13 @@ public class MyBetFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param index Index of the tab
      * @return A new instance of fragment MyBetFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static MyBetFragment newInstance(String param1, String param2) {
+    public static MyBetFragment newInstance(int index) {
         MyBetFragment fragment = new MyBetFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_SECTION_NUMBER, param1);
+        args.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(args);
         return fragment;
     }
@@ -93,6 +92,18 @@ public class MyBetFragment extends Fragment {
         checkEmpty();
 
         return view;
+    }
+
+    /**
+     * Reload the Adapter's data when Fragment is openes again
+     * @param view
+     * @param savedInstanceState
+     * @author Jan Stippe
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        betAdapter.reloadData();
     }
 
     /**

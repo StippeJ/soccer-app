@@ -38,7 +38,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
 
-    private final List<Bet> betList;
+    private List<Bet> betList;
     private final Context context;
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String BET_LIST = "betList";
@@ -169,6 +169,11 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
 
         editor.putString(BET_LIST, jsonBets);
         editor.apply();
+    }
+
+    public void reloadData() {
+        betList = getBets();
+        notifyDataSetChanged();
     }
 
     public static class BetViewHolder extends RecyclerView.ViewHolder {
