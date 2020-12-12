@@ -33,5 +33,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/primaryColor"
+        android:elevation="0dp"
         app:srcCompat="@drawable/ic_bet_list" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
