@@ -73,7 +73,7 @@ public class NextEventsFragment extends Fragment {
                 if (response.isSuccessful()) {
                     // Give data to adapter and hide ProgressBar
                     EventsResponse er = response.body();
-                    nextEventAdapter.updateData(er.getEvents());
+                    nextEventAdapter.updateData(er.getAscendingEvents());
                     progressBar.setVisibility(View.INVISIBLE);
                     recyclerView.setVisibility(View.VISIBLE);
                 } else {

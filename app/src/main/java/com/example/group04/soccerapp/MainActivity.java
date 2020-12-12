@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity {
             public void onResponse(@NotNull Call<EventsResponse> call, @NotNull Response<EventsResponse> response) {
                 if(response.isSuccessful()) {
                     EventsResponse eventsResponse = response.body();
-                    eventAdapter.updateData(eventsResponse.getEvents());
+                    eventAdapter.updateData(eventsResponse.getDescendingEvents());
                     progressBar.setVisibility(View.INVISIBLE);
                     contentGroup.setVisibility(View.VISIBLE);
                 }else {

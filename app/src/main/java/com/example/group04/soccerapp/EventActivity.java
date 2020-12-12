@@ -91,7 +91,7 @@ public class EventActivity extends BaseActivity {
                         apiHelper.loadClubBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
 
                         // Show the result of the current event (if match is finished)
-                        if (currentEvent.getStrStatus().equals("Match Finished")) {
+                        if (currentEvent.getIntHomeScore() != null && currentEvent.getIntAwayScore() != null) {
                             eventResult.setText(String.format(Locale.getDefault(),"%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
                         } else {
                             eventResult.setText("- : -");
