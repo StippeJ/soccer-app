@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -78,6 +79,10 @@ public class BaseActivity extends AppCompatActivity {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     Toast.makeText(this, R.string.toastModeChangedNight, Toast.LENGTH_SHORT).show();
                 }
+                return true;
+            case R.id.menuItemBugList:
+                //Print bug list as toast
+                Toast.makeText(this, R.string.toastBugList, Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return false;

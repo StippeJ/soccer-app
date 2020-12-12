@@ -23,6 +23,7 @@
     <string name="moreIcon">Mehr Optionen</string>
     <string name="aboutIcon">Infos über die App</string>
     <string name="bugIcon">Einen Bug melden</string>
+    <string name="bugListIcon">Bug Liste</string>
     <string name="nightModeIcon">Nachtmodus ein/aus</string>
     <string name="errorNoMailClients">Auf ihrem Handy sind keine Mail apps installiert!</string>
     <string name="toastAbout"><b>Über diese App:</b>\n\n<u>App Entwickler:</u>\n\t- André Bautz\n\t- Tim-Loris Deinert\n\t- Jan Stippe\n\n<u>Version:</u> v.1.0</string>
@@ -30,6 +31,7 @@
     <string name="modeDayText">In den Nachtmodus wechseln</string>
     <string name="toastModeChangedDay">In den Tagmodus gewechselt</string>
     <string name="toastModeChangedNight">In den Nachtmodus gewechselt</string>
+    <string name="toastBugList">In dieser App gibt es keine bugs, nur features 😉</string>
     <string name="tableWinsText">Siege: %d</string>
     <string name="tableDrawText">Unentschieden: %d</string>
     <string name="tableLossText">Niederlagen: %d</string>

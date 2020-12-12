@@ -28,6 +28,7 @@
     <string name="moreIcon">More options </string>
     <string name="aboutIcon">Infos about the app</string>
     <string name="bugIcon">Report a bug</string>
+    <string name="bugListIcon">Bug list</string>
     <string name="nightModeIcon">Toggle night mode on/off</string>
     <string name="errorNoMailClients">There are no mail clients installed!</string>
     <string name="toastAbout"><b>About this App:</b>\n\n<u>App creator:</u>\n\t- André Bautz\n\t- Tim-Loris Deinert\n\t- Jan Stippe\n\n<u>Version:</u> v.1.0</string>
@@ -35,6 +36,7 @@
     <string name="modeDayText">Change to night mode</string>
     <string name="toastModeChangedDay">Changed app theme to day mode</string>
     <string name="toastModeChangedNight">Changed app theme to night mode</string>
+    <string name="toastBugList">There are no bugs in this app, just features 😉</string>
     <string name="tableWinsText">Wins: %d</string>
     <string name="tableDrawText">Draws: %d</string>
     <string name="tableLossText">Losses: %d</string>
