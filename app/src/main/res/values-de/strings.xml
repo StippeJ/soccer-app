@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Fußball App</string>
     <string name="infoSubheading">Mannschaftsinfos:</string>
     <string name="clubImageDescription">Bild des Vereinswappens</string>
     <string name="stadiumHeadline"><u>Heimat Stadion:</u></string>

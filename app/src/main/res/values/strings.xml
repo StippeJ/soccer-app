@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Soccer App</string>
+    <string name="app_name" translatable="false">BuLi Live</string>
     <string name="infoSubheading">Club infos:</string>
     <string name="clubImageDescription">Image of the Club Badge</string>
     <string name="stadiumHeadline"><u>Home Stadium:</u></string>
