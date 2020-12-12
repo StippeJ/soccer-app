@@ -50,10 +50,10 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
     public BetAdapter(Context context) {
         this.context = context;
         this.betList = getBets();
-//        betList.add(new Bet(1019606, 3, 1));    // both wrong
-//        betList.add(new Bet(1019606, 1, 3));    // correct
-//        betList.add(new Bet(1019606, 1, 1));    // home correct, away incorrect
-//        betList.add(new Bet(1019606, 3, 3));    // home incorrect, away correct
+        betList.add(new Bet(1019606, 3, 1));    // both wrong
+        betList.add(new Bet(1019606, 1, 3));    // correct
+        betList.add(new Bet(1019606, 1, 1));    // home correct, away incorrect
+        betList.add(new Bet(1019606, 3, 3));    // home incorrect, away correct
     }
 
     @NonNull
