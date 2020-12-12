@@ -1,18 +1,17 @@
 package com.example.group04.soccerapp.ui.overview;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.adapter.TableAdapter;
@@ -23,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,16 +32,7 @@ import retrofit2.Response;
  */
 public class TableFragment extends Fragment {
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
     TableAdapter tableAdapter;
-
-    public static NextEventsFragment newInstance(int index) {
-        NextEventsFragment fragment = new NextEventsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
