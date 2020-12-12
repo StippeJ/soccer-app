@@ -14,6 +14,7 @@
     <string name="title_activity_overview">Overview</string>
     <string name="tab_text_1">Table</string>
     <string name="tab_text_2">Next events</string>
+    <string name="tab_text_3">My bets</string>
     <string name="apiResponseError">Error! The API is not responding. Please try again now or later!</string>
     <string name="apiErrorOnFailure">Error! Please check your Internet and try again or contact the support!</string>
     <string name="getExtraError">An Error Occurred! Please go back and try again!</string>
@@ -37,7 +38,6 @@
     <string name="tableWinsText">Wins: %d</string>
     <string name="tableDrawText">Draws: %d</string>
     <string name="tableLossText">Losses: %d</string>
-    <string name="betList">List of bets</string>
     <string name="saveBet">Save bet</string>
     <string name="noBets">There currently are no bets.</string>
     <string name="emptyEditText">Please fill in the textboxes.</string>

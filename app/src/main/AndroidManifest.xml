@@ -12,7 +12,6 @@
         android:theme="@style/Theme.SoccerApp">
         <activity android:name=".BaseActivity" />
         <activity android:name=".BetActivity" />
-        <activity android:name=".BetListActivity" />
         <activity android:name=".OverviewActivity"/>
         <activity android:name=".EventActivity" />
         <activity android:name=".ClubActivity" />

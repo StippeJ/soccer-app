@@ -1,39 +1,71 @@
-package com.example.group04.soccerapp;
+package com.example.group04.soccerapp.ui.overview;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
+import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.adapter.BetAdapter;
 import com.example.group04.soccerapp.adapter.SwipeToDeleteCallback;
 
 /**
- * Activity to show all saved bets in a RecyclerView
+ * Fragment to show the saved bets
  * @author Jan Stippe
  */
-public class BetListActivity extends BaseActivity {
+public class MyBetFragment extends Fragment {
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     TextView errorMessage;
     RecyclerView recyclerView;
     BetAdapter betAdapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bet_list);
+    public MyBetFragment() {
+        // Required empty public constructor
+    }
 
-        errorMessage = findViewById(R.id.betListNoBets);
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment MyBetFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static MyBetFragment newInstance(String param1, String param2) {
+        MyBetFragment fragment = new MyBetFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_SECTION_NUMBER, param1);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_my_bet, container, false);
+
+        errorMessage = view.findViewById(R.id.betListNoBets);
 
         // Initialize RecyclerView
-        recyclerView = findViewById(R.id.betRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView = view.findViewById(R.id.betRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false));
 
         // Create Adapter and register AdapterDataObserver
-        betAdapter = new BetAdapter(getApplicationContext());
+        betAdapter = new BetAdapter(view.getContext());
         betAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
@@ -59,6 +91,8 @@ public class BetListActivity extends BaseActivity {
         itemTouchHelper.attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(betAdapter);
         checkEmpty();
+
+        return view;
     }
 
     /**
@@ -72,5 +106,4 @@ public class BetListActivity extends BaseActivity {
             recyclerView.setVisibility(betAdapter.getItemCount() == 0 ? View.INVISIBLE : View.VISIBLE);
         }
     }
-
 }
