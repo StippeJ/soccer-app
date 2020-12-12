@@ -9,8 +9,8 @@
     <string name="stadiumImageDescription">Bild des Stadions</string>
     <string name="title_activity_overview">Übersicht</string>
     <string name="tab_text_1">Tabelle</string>
-    <string name="tab_text_2">Nächsten Spiele</string>
-    <string name="tab_text_3">Meine Tips</string>
+    <string name="tab_text_2">Nächste Spiele</string>
+    <string name="tab_text_3">Meine Tipps</string>
     <string name="apiResponseError">Error! Die API reagiert nicht. Bitte versuchen sie es erneut!</string>
     <string name="apiErrorOnFailure">Error! Bitte überprüfen Sie ihr Internet und versuchen es erneut oder kontaktieren sie den Support!</string>
     <string name="getExtraError">Ein Fehler ist aufgetreten! Bitte gehen sie zurück und versuchen es erneut!</string>
