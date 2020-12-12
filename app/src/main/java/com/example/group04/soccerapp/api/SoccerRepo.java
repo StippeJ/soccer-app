@@ -1,6 +1,5 @@
 package com.example.group04.soccerapp.api;
 
-import com.example.group04.soccerapp.api.SoccerApi;
 import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.EventsResponse;
 import com.example.group04.soccerapp.model.TableResponse;

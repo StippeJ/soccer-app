@@ -31,6 +31,13 @@
                 android:icon="@drawable/ic_menu_icon_bug"
                 app:iconTint="@color/primaryTextColor"
                 app:showAsAction="always"/>
+
+            <item
+                android:id="@+id/menuItemBugList"
+                android:title="@string/bugListIcon"
+                android:icon="@drawable/ic_menu_icon_list"
+                app:iconTint="@color/primaryTextColor"
+                app:showAsAction="ifRoom"/>
         </menu>
     </item>
 </menu>

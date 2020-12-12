@@ -79,6 +79,10 @@ public class BaseActivity extends AppCompatActivity {
                     Toast.makeText(this, R.string.toastModeChangedNight, Toast.LENGTH_SHORT).show();
                 }
                 return true;
+            case R.id.menuItemBugList:
+                //Print bug list as toast
+                Toast.makeText(this, R.string.toastBugList, Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return false;
         }
