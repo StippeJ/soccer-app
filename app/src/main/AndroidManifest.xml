@@ -13,10 +13,7 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".BetActivity" />
         <activity android:name=".BetListActivity" />
-        <activity
-            android:name=".OverviewActivity"
-            android:label="@string/title_activity_overview"
-            android:theme="@style/Theme.SoccerApp.NoActionBar" />
+        <activity android:name=".OverviewActivity"/>
         <activity android:name=".EventActivity" />
         <activity android:name=".ClubActivity" />
         <activity android:name=".MainActivity">
