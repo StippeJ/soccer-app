@@ -128,13 +128,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/eventRound"/>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_40_percent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4"/>
+
         <TextView
             android:id="@+id/eventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventDateTitle"
-            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventDateTitle"/>
 
         <TextView
@@ -143,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventLocationTitle"
-            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventLocationTitle"/>
 
         <TextView
@@ -152,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventLeagueTitle"
-            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventLeagueTitle"/>
 
         <TextView
@@ -161,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventRoundTitle"
-            app:layout_constraintStart_toEndOf="@id/eventLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventRoundTitle"/>
 
         <TextView
