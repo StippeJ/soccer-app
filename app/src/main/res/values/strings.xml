@@ -23,7 +23,7 @@
     <string name="eventLocation">Location:</string>
     <string name="eventLeague">League:</string>
     <string name="eventRound">Round:</string>
-    <string name="newsText">News</string>
+    <string name="newsText">Latest matchday results</string>
     <string name="bundesligaButtonText">To the Bundesliga</string>
     <string name="moreIcon">More options </string>
     <string name="aboutIcon">Infos about the app</string>

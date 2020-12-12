@@ -18,7 +18,7 @@
     <string name="eventLocation">Ort:</string>
     <string name="eventLeague">Liga:</string>
     <string name="eventRound">Spieltag:</string>
-    <string name="newsText">Neuigkeiten</string>
+    <string name="newsText">Die neusten Spieltagsergebnisse</string>
     <string name="bundesligaButtonText">Zur Bundesliga</string>
     <string name="moreIcon">Mehr Optionen</string>
     <string name="aboutIcon">Infos über die App</string>
