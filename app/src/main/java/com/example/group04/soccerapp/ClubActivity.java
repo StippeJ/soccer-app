@@ -1,6 +1,5 @@
 package com.example.group04.soccerapp;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,9 +36,9 @@ public class ClubActivity extends BaseActivity {
     TextView error;
     TextView teamName;
     ImageView teamBadge;
-    ImageButton iconFb;
-    ImageButton iconTw;
-    ImageButton iconIn;
+    ImageView iconFb;
+    ImageView iconTw;
+    ImageView iconIn;
     TextView foundedYear;
     TextView stadiumName;
     ImageView stadiumImage;
@@ -52,7 +50,6 @@ public class ClubActivity extends BaseActivity {
     TextView stadiumHeading;
     TextView capacityHeading;
     TextView descriptionHeading;
-    ConstraintLayout socialIcons;
     View spacer1;
     View spacer2;
 
@@ -88,7 +85,6 @@ public class ClubActivity extends BaseActivity {
         stadiumHeading = findViewById(R.id.stadiumHeadline);
         capacityHeading = findViewById(R.id.capacityHeadline);
         descriptionHeading = findViewById(R.id.descriptionSubheading);
-        socialIcons = findViewById(R.id.socialIcons);
         spacer1 = findViewById(R.id.spacer1);
         spacer2 = findViewById(R.id.spacer2);
     }
@@ -151,8 +147,17 @@ public class ClubActivity extends BaseActivity {
         Picasso.get().load(cd.getStrTeamBadge()).into(teamBadge);
         foundedYear.setText(String.valueOf(cd.getIntFormedYear()));
         stadiumName.setText(cd.getStrStadium());
-        Picasso.get().load(cd.getStrStadiumThumb()).into(stadiumImage);
         capacity.setText(String.valueOf(cd.getIntStadiumCapacity()));
+
+        //check if a stadium image is provided by the API
+        if(TextUtils.isEmpty(cd.getStrStadiumThumb())) {
+            //if no image is provided set a dummy image
+            stadiumImage.setImageResource(R.drawable.ic_image_not_available);
+        }
+        else {
+            //else show the provided image
+            Picasso.get().load(cd.getStrStadiumThumb()).into(stadiumImage);
+        }
 
         //Check System Language and if needed change Description Language
         if(Locale.getDefault().getLanguage().equals("de")) {
@@ -260,7 +265,7 @@ public class ClubActivity extends BaseActivity {
     }
 
     /**
-     * Method to refctor an url without https://www. at the beginning to a normal working url for an implicit intent
+     * Method to refactor an url without https://www. at the beginning to a normal working url for an implicit intent
      * @param url url string which should be refactored to a full URL
      * @return full refactored url which can be used in imlicit intents
      * @author Tim-Loris Deinert
