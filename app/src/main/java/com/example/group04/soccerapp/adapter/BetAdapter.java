@@ -50,10 +50,6 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
     public BetAdapter(Context context) {
         this.context = context;
         this.betList = getBets();
-//        betList.add(new Bet(1019606, 3, 1));    // both wrong
-//        betList.add(new Bet(1019606, 1, 3));    // correct
-//        betList.add(new Bet(1019606, 1, 1));    // home correct, away incorrect
-//        betList.add(new Bet(1019606, 3, 3));    // home incorrect, away correct
     }
 
     @NonNull
@@ -89,15 +85,19 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
                         // Compare the score of the home team to the bet and set an according icon
                         if (bet.getScoreHome() == event.getIntHomeScore()) {
                             holder.imageBetHomeCorrect.setVisibility(View.VISIBLE);
+                            holder.imageBetHomeIncorrect.setVisibility(View.INVISIBLE);
                         } else {
                             holder.imageBetHomeIncorrect.setVisibility(View.VISIBLE);
+                            holder.imageBetHomeCorrect.setVisibility(View.INVISIBLE);
                         }
 
                         // Compare the score of the away team to the bet and set an according icon
                         if (bet.getScoreAway() == event.getIntAwayScore()) {
                             holder.imageBetAwayCorrect.setVisibility(View.VISIBLE);
+                            holder.imageBetAwayIncorrect.setVisibility(View.INVISIBLE);
                         } else {
                             holder.imageBetAwayIncorrect.setVisibility(View.VISIBLE);
+                            holder.imageBetAwayCorrect.setVisibility(View.INVISIBLE);
                         }
                     }
 
@@ -173,6 +173,12 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
 
     public void reloadData() {
         betList = getBets();
+
+//        betList.add(new Bet(1019616, 1, 5));
+//        betList.add(new Bet(1019620, 1, 3));
+//        betList.add(new Bet(1019608, 1, 1));
+//        betList.add(new Bet(1019614, 3, 3));
+
         notifyDataSetChanged();
     }
 
