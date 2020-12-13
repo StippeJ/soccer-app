@@ -73,7 +73,7 @@ public class MyBetFragment extends Fragment {
     }
 
     /**
-     * Reload data in Adapter eacht time Fragment is opened
+     * Reload data in Adapter each time Fragment is opened
      * @author Jan Stippe
      */
     @Override
