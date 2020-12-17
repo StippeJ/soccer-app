@@ -97,10 +97,10 @@ public class TeamActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
 
-        int clubId = getIntent().getIntExtra("clubId", 0);
+        int teamId = getIntent().getIntExtra("teamId", 0);
 
-        if(clubId != 0) {
-            getClubDetails(clubId);
+        if(teamId != 0) {
+            getTeamDetails(teamId);
         }
         else {
             showError(true, false);
@@ -108,11 +108,11 @@ public class TeamActivity extends BaseActivity {
     }
 
     /**
-     * Request general Club Details from the API and load them into the Views
-     * @param clubID ID of the requested Club
+     * Request general Team Details from the API and load them into the Views
+     * @param teamID ID of the requested Team
      * @author Tim-Loris Deinert
      */
-    public void getClubDetails(int clubID) {
+    public void getTeamDetails(int teamID) {
         contentGroup.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -133,12 +133,12 @@ public class TeamActivity extends BaseActivity {
             public void onFailure(@NotNull Call<TeamDetailsResponse> call, @NotNull Throwable t) {
                 showError(false, true);
             }
-        }, clubID);
+        }, teamID);
     }
 
     /**
      * Take the provided Data and load or write them into the layout views
-     * @param cd API provided Data about one club
+     * @param cd API provided Data about one team
      * @author Tim-Loris Deinert
      */
     public void fillViews(TeamDetails cd) {

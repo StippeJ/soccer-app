@@ -44,7 +44,7 @@ public class EventActivity extends BaseActivity {
 
     /**
      * Get Intent-extra that contains the id of a match.
-     * Load the result of the match and the badges of the two clubs.
+     * Load the result of the match and the badges of the two teams.
      * @param savedInstanceState Saved state of the Activity
      * @author Jan Stippe
      */
@@ -108,7 +108,7 @@ public class EventActivity extends BaseActivity {
 
     /**
      * Set onClickListeners for the images
-     * Will send Intent to start ClubActivity
+     * Will send Intent to start TeamActivity
      * @author Jan Stippe
      */
     @Override
@@ -117,13 +117,13 @@ public class EventActivity extends BaseActivity {
 
         imageHomeTeam.setOnClickListener(v -> {
             Intent intent = new Intent(this, TeamActivity.class);
-            intent.putExtra("clubId", currentEvent.getIdHomeTeam());
+            intent.putExtra("teamId", currentEvent.getIdHomeTeam());
             startActivity(intent);
         });
 
         imageAwayTeam.setOnClickListener(v -> {
             Intent intent = new Intent(this, TeamActivity.class);
-            intent.putExtra("clubId", currentEvent.getIdAwayTeam());
+            intent.putExtra("teamId", currentEvent.getIdAwayTeam());
             startActivity(intent);
         });
     }

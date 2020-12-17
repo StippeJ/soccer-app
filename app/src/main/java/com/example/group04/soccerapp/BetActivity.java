@@ -116,7 +116,7 @@ public class BetActivity extends BaseActivity {
 
     /**
      * Set onClickListeners for the images
-     * Will send Intent to start ClubActivity
+     * Will send Intent to start TeamActivity
      * @author Jan Stippe
      */
     @Override
@@ -125,13 +125,13 @@ public class BetActivity extends BaseActivity {
 
         imageHomeTeam.setOnClickListener(v -> {
             Intent intent = new Intent(this, TeamActivity.class);
-            intent.putExtra("clubId", currentEvent.getIdHomeTeam());
+            intent.putExtra("teamId", currentEvent.getIdHomeTeam());
             startActivity(intent);
         });
 
         imageAwayTeam.setOnClickListener(v -> {
             Intent intent = new Intent(this, TeamActivity.class);
-            intent.putExtra("clubId", currentEvent.getIdAwayTeam());
+            intent.putExtra("teamId", currentEvent.getIdAwayTeam());
             startActivity(intent);
         });
 

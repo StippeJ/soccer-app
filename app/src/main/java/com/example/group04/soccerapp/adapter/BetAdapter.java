@@ -59,7 +59,7 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
     @NonNull
     @Override
     public BetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View betView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_match, parent, false);
+        View betView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_event, parent, false);
         return new BetViewHolder(betView);
     }
 
@@ -101,13 +101,13 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
                         }
                     }
 
-                    // Load the badges of the clubs
+                    // Load the badges of the teams
                     apiHelper.loadTeamBadge(event.getIdHomeTeam(), holder.imageHomeTeam);
                     apiHelper.loadTeamBadge(event.getIdAwayTeam(), holder.imageAwayTeam);
 
                     // Show information about the teams and the bet for the match
-                    holder.homeClub.setText(event.getStrHomeTeam());
-                    holder.awayClub.setText(event.getStrAwayTeam());
+                    holder.homeTeam.setText(event.getStrHomeTeam());
+                    holder.awayTeam.setText(event.getStrAwayTeam());
                     holder.matchResult.setText(String.format(Locale.getDefault(), "%d : %d", bet.getScoreHome(), bet.getScoreAway()));
                     holder.dateOfMatch.setText(event.getFormattedDateAndTime());
                 }
@@ -179,9 +179,9 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
     public static class BetViewHolder extends RecyclerView.ViewHolder {
 
         TextView dateOfMatch;
-        TextView homeClub;
+        TextView homeTeam;
         TextView matchResult;
-        TextView awayClub;
+        TextView awayTeam;
         ImageView imageHomeTeam;
         ImageView imageAwayTeam;
         ImageView imageBetHomeCorrect;
@@ -193,9 +193,9 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
             super(itemView);
 
             dateOfMatch = itemView.findViewById(R.id.matchDate);
-            homeClub = itemView.findViewById(R.id.homeClub);
+            homeTeam = itemView.findViewById(R.id.homeTeam);
             matchResult = itemView.findViewById(R.id.matchEndResult);
-            awayClub = itemView.findViewById(R.id.awayClub);
+            awayTeam = itemView.findViewById(R.id.awayTeam);
             imageHomeTeam = itemView.findViewById(R.id.imageHomeTeamMain);
             imageAwayTeam = itemView.findViewById(R.id.imageAwayTeamMain);
             imageBetHomeCorrect = itemView.findViewById(R.id.betHomeCorrect);

@@ -1,15 +1,15 @@
 package com.example.group04.soccerapp;
 
-import androidx.constraintlayout.widget.Group;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.Group;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group04.soccerapp.adapter.EventAdapter;
 import com.example.group04.soccerapp.api.SoccerRepo;
@@ -43,9 +43,9 @@ public class MainActivity extends BaseActivity {
 
         // Setting the values of the variables
         soccerRepo = new SoccerRepo();
-        error = findViewById(R.id.errorTextMain);
-        headline = findViewById(R.id.newsHeadline);
-        bundesligaButton = findViewById(R.id.bundesligaButton);
+        error = findViewById(R.id.mainErrorMessage);
+        headline = findViewById(R.id.mainNewsHeadline);
+        bundesligaButton = findViewById(R.id.mainBundesligaButton);
 
         // Method for getting the values of the last matches from the api
         getLastMatchesFromApi();
@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity {
      * @author André Bautz
      */
     public void setRecyclerViewContent() {
-        RecyclerView recyclerView = findViewById(R.id.lastMatchResults);
+        RecyclerView recyclerView = findViewById(R.id.mainLastMatchResults);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
         eventAdapter = new EventAdapter(new ArrayList<>(), EventActivity.class);
         recyclerView.setAdapter(eventAdapter);

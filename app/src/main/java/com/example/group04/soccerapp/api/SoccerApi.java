@@ -18,7 +18,7 @@ public interface SoccerApi {
     Call<TableResponse> getTable(@Query("l") int leagueId, @Query("s") String season);
 
     @GET("lookupteam.php")
-    Call<TeamDetailsResponse> getTeamDetails(@Query("id") int clubId);
+    Call<TeamDetailsResponse> getTeamDetails(@Query("id") int teamId);
 
     @GET("eventsnextleague.php")
     Call<EventsResponse> getNextEventsOfLeague(@Query("id") int leagueId);

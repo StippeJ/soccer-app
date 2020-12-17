@@ -53,8 +53,8 @@ public class SoccerRepo {
     }
 
     // Get details about a team with a given id
-    public void getTeamDetails(Callback<TeamDetailsResponse> callback, int clubId) {
-        Call<TeamDetailsResponse> call = soccerApi.getTeamDetails(clubId);
+    public void getTeamDetails(Callback<TeamDetailsResponse> callback, int teamId) {
+        Call<TeamDetailsResponse> call = soccerApi.getTeamDetails(teamId);
         call.enqueue(callback);
     }
 

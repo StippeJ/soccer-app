@@ -49,11 +49,11 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
     public void onBindViewHolder(@NonNull TableViewHolder holder, int position) {
         TeamTableData teamTableData = tableList.get(position);
 
-        Integer clubID = teamTableData.getTeamId();
+        Integer teamID = teamTableData.getTeamId();
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();
             Intent openMatchdayActivity = new Intent(context , TeamActivity.class);
-            openMatchdayActivity.putExtra("clubId", clubID);
+            openMatchdayActivity.putExtra("teamId", teamID);
             context.startActivity(openMatchdayActivity);
         });
 
@@ -67,7 +67,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             @Override
             public void onResponse(@NotNull Call<TableResponse> call, @NotNull Response<TableResponse> response) {
                 if(response.isSuccessful()) {
-                    apiHelper.loadTeamBadge(clubID, holder.clubIcon);
+                    apiHelper.loadTeamBadge(teamID, holder.teamIcon);
                 }
             }
 
@@ -77,7 +77,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             }
         }, actualSeason);
 
-        holder.clubName.setText(teamTableData.getName());
+        holder.teamName.setText(teamTableData.getName());
 
         String tempString;
 
@@ -88,7 +88,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         tempString = holder.itemView.getContext().getString(R.string.tableLossText, teamTableData.getLoss());
         holder.loss.setText(tempString);
 
-        holder.clubPoints.setText(String.format(Locale.getDefault(), "%d", teamTableData.getWin() * 3 + teamTableData.getDraw()));
+        holder.teamPoints.setText(String.format(Locale.getDefault(), "%d", teamTableData.getWin() * 3 + teamTableData.getDraw()));
     }
 
     @Override
@@ -103,23 +103,23 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
 
     public static class TableViewHolder extends RecyclerView.ViewHolder {
         TextView tablePosition;
-        ImageView clubIcon;
-        TextView clubName;
+        ImageView teamIcon;
+        TextView teamName;
         TextView wins;
         TextView draw;
         TextView loss;
-        TextView clubPoints;
+        TextView teamPoints;
 
         public TableViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tablePosition = itemView.findViewById(R.id.tablePosition);
-            clubIcon = itemView.findViewById(R.id.tableClubIcon);
-            clubName = itemView.findViewById(R.id.tableClubName);
+            teamIcon = itemView.findViewById(R.id.tableTeamIcon);
+            teamName = itemView.findViewById(R.id.tableTeamName);
             wins = itemView.findViewById(R.id.tableWins);
             draw = itemView.findViewById(R.id.tableDraws);
             loss = itemView.findViewById(R.id.tableLosses);
-            clubPoints = itemView.findViewById(R.id.tablePoints);
+            teamPoints = itemView.findViewById(R.id.tablePoints);
         }
     }
 

@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/betScoreHome"
             app:layout_constraintBottom_toTopOf="@+id/betHorizontalSpacer"
-            android:contentDescription="@string/clubImageDescription"/>
+            android:contentDescription="@string/teamImageDescription"/>
 
         <EditText
             android:id="@+id/betScoreHome"
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toEndOf="@+id/betScoreAway"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/betImageHomeTeam"
-            android:contentDescription="@string/clubImageDescription"/>
+            android:contentDescription="@string/teamImageDescription"/>
 
         <View
             android:id="@+id/betHorizontalSpacer"

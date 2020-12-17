@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/eventHeadline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/eventResult"
-            android:contentDescription="@string/clubImageDescription"/>
+            android:contentDescription="@string/teamImageDescription"/>
 
         <TextView
             android:id="@+id/eventResult"
@@ -74,7 +74,7 @@
             app:layout_constraintStart_toEndOf="@+id/eventResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/eventImageHomeTeam"
-            android:contentDescription="@string/clubImageDescription"/>
+            android:contentDescription="@string/teamImageDescription"/>
 
         <View
             android:id="@+id/eventHorizontalSpacer"

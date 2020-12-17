@@ -16,7 +16,7 @@ import retrofit2.Response;
 
 /**
  * Helper-Class for API-requests
- * Provides a method to request club-details and load an image into a given ImageView
+ * Provides a method to request team-details and load an image into a given ImageView
  * @author Jan Stippe
  */
 public class ApiHelper {
@@ -37,12 +37,12 @@ public class ApiHelper {
     }
 
     /**
-     * Load the image of a clubs badge into a specified ImageView.
-     * @param clubId Id of the club, for which the image should be requested from the API
+     * Load the image of a teams badge into a specified ImageView.
+     * @param teamId Id of the team, for which the image should be requested from the API
      * @param imageView ImageView into which the image will be loaded
      * @author Jan Stippe
      */
-    public void loadTeamBadge(int clubId, ImageView imageView) {
+    public void loadTeamBadge(int teamId, ImageView imageView) {
         soccerRepo.getTeamDetails(new Callback<TeamDetailsResponse>() {
 
             @Override
@@ -61,7 +61,7 @@ public class ApiHelper {
                 Log.d("ApiHelper", "onFailure");
             }
 
-        }, clubId);
+        }, teamId);
     }
 
 }

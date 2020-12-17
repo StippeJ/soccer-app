@@ -42,7 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventVie
     @NonNull
     @Override
     public NextEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View nextMatch = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_match, parent, false);
+        View nextMatch = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_event, parent, false);
         return new EventAdapter.NextEventViewHolder(nextMatch);
     }
 
@@ -60,8 +60,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventVie
 
         // Set the data for the Views
         holder.dateOfMatch.setText(event.getFormattedDateAndTime());
-        holder.homeClub.setText(event.getStrHomeTeam());
-        holder.awayClub.setText(event.getStrAwayTeam());
+        holder.homeTeam.setText(event.getStrHomeTeam());
+        holder.awayTeam.setText(event.getStrAwayTeam());
         if (activityType == BetActivity.class) {
             holder.matchResult.setText("- : -");
         } else {
@@ -88,9 +88,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventVie
     public static class NextEventViewHolder extends RecyclerView.ViewHolder {
 
         TextView dateOfMatch;
-        TextView homeClub;
+        TextView homeTeam;
         TextView matchResult;
-        TextView awayClub;
+        TextView awayTeam;
         ImageView imageHomeTeam;
         ImageView imageAwayTeam;
 
@@ -98,9 +98,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventVie
             super(itemView);
 
             dateOfMatch = itemView.findViewById(R.id.matchDate);
-            homeClub = itemView.findViewById(R.id.homeClub);
+            homeTeam = itemView.findViewById(R.id.homeTeam);
             matchResult = itemView.findViewById(R.id.matchEndResult);
-            awayClub = itemView.findViewById(R.id.awayClub);
+            awayTeam = itemView.findViewById(R.id.awayTeam);
             imageHomeTeam = itemView.findViewById(R.id.imageHomeTeamMain);
             imageAwayTeam = itemView.findViewById(R.id.imageAwayTeamMain);
         }
