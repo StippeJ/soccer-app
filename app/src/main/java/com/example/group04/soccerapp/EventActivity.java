@@ -30,16 +30,16 @@ public class EventActivity extends BaseActivity {
     Event currentEvent;
 
     // Views to show data from API
-    Group eventGroup;
+    Group viewGroup;
     ProgressBar progressBar;
     ImageView imageHomeTeam;
     ImageView imageAwayTeam;
-    TextView eventHeadline;
-    TextView eventResult;
-    TextView eventDate;
-    TextView eventLocation;
-    TextView eventLeague;
-    TextView eventRound;
+    TextView headline;
+    TextView result;
+    TextView date;
+    TextView location;
+    TextView league;
+    TextView round;
     TextView errorMessage;
 
     /**
@@ -55,21 +55,21 @@ public class EventActivity extends BaseActivity {
 
         apiHelper = new ApiHelper();
 
-        eventGroup = findViewById(R.id.eventGroup);
+        viewGroup = findViewById(R.id.eventGroup);
         progressBar = findViewById(R.id.eventProgressSpinner);
-        imageHomeTeam = findViewById(R.id.imageHomeTeam);
-        imageAwayTeam = findViewById(R.id.imageAwayTeam);
-        eventResult = findViewById(R.id.eventResult);
-        eventHeadline = findViewById(R.id.eventHeadline);
-        eventDate = findViewById(R.id.eventDate);
-        eventLocation = findViewById(R.id.eventLocation);
-        eventLeague = findViewById(R.id.eventLeague);
-        eventRound = findViewById(R.id.eventRound);
-        errorMessage = findViewById(R.id.errorMessage);
+        imageHomeTeam = findViewById(R.id.eventImageHomeTeam);
+        imageAwayTeam = findViewById(R.id.eventImageAwayTeam);
+        result = findViewById(R.id.eventResult);
+        headline = findViewById(R.id.eventHeadline);
+        date = findViewById(R.id.eventDate);
+        location = findViewById(R.id.eventLocation);
+        league = findViewById(R.id.eventLeague);
+        round = findViewById(R.id.eventRound);
+        errorMessage = findViewById(R.id.eventErrorMessage);
 
         // Show a progressbar
         progressBar.setVisibility(View.VISIBLE);
-        eventGroup.setVisibility(View.INVISIBLE);
+        viewGroup.setVisibility(View.INVISIBLE);
 
         // Get Intent that should contain the eventId
         Bundle bundle = getIntent().getExtras();
@@ -86,40 +86,20 @@ public class EventActivity extends BaseActivity {
                         EventsResponse er = response.body();
                         currentEvent = er.getEvents().get(0);
 
-                        // Load the two images
-                        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
-                        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
-
-                        // Show the result of the current event (if match is finished)
-                        if (currentEvent.getIntHomeScore() != null && currentEvent.getIntAwayScore() != null) {
-                            eventResult.setText(String.format(Locale.getDefault(),"%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
-                        } else {
-                            eventResult.setText("- : -");
-                        }
-                        eventHeadline.setText(currentEvent.getStrEvent());
-                        eventDate.setText(currentEvent.getFormattedDateAndTime());
-                        eventLocation.setText(currentEvent.getStrVenue());
-                        eventLeague.setText(currentEvent.getStrLeague());
-                        eventRound.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
+                        loadContentIntoViews();
 
                         progressBar.setVisibility(View.INVISIBLE);
-                        eventGroup.setVisibility(View.VISIBLE);
+                        viewGroup.setVisibility(View.VISIBLE);
                     } else {
                         // Show error message
-                        progressBar.setVisibility(View.INVISIBLE);
-                        eventGroup.setVisibility(View.INVISIBLE);
-                        errorMessage.setText(getString(R.string.apiResponseError));
-                        errorMessage.setVisibility(View.VISIBLE);
+                        showErrorMessage(R.string.apiResponseError);
                     }
                 }
 
                 @Override
                 public void onFailure(@NotNull Call<EventsResponse> call, @NotNull Throwable t) {
                     // Show error message
-                    progressBar.setVisibility(View.INVISIBLE);
-                    eventGroup.setVisibility(View.INVISIBLE);
-                    errorMessage.setText(getString(R.string.apiErrorOnFailure));
-                    errorMessage.setVisibility(View.VISIBLE);
+                    showErrorMessage(R.string.apiErrorOnFailure);
                 }
 
             }, eventId);
@@ -146,6 +126,42 @@ public class EventActivity extends BaseActivity {
             intent.putExtra("clubId", currentEvent.getIdAwayTeam());
             startActivity(intent);
         });
+    }
+
+    /**
+     * Show an error-message with a given string
+     * @param errorMessageId Id of the string that should be shown
+     * @author Jan Stippe
+     */
+    private void showErrorMessage(int errorMessageId) {
+        progressBar.setVisibility(View.INVISIBLE);
+        viewGroup.setVisibility(View.INVISIBLE);
+        errorMessage.setText(getString(errorMessageId));
+        errorMessage.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Load the data of the currentEvent into the layout's Views
+     * @author Jan Stippe
+     */
+    private void loadContentIntoViews() {
+        // Load the two images
+        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
+        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
+
+        // Show the result of the current event (if match is finished)
+        if (currentEvent.getIntHomeScore() != null && currentEvent.getIntAwayScore() != null) {
+            result.setText(String.format(Locale.getDefault(),"%d : %d", currentEvent.getIntHomeScore(), currentEvent.getIntAwayScore()));
+        } else {
+            result.setText("- : -");
+        }
+
+        // Fill in other TextViews
+        headline.setText(currentEvent.getStrEvent());
+        date.setText(currentEvent.getFormattedDateAndTime());
+        location.setText(currentEvent.getStrVenue());
+        league.setText(currentEvent.getStrLeague());
+        round.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
     }
 
 }

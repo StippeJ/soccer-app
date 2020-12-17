@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:constraint_referenced_ids="eventHeadline,imageHomeTeam,imageAwayTeam,spacer,eventDateTitle,eventLocationTitle,eventLeagueTitle,eventRoundTitle,eventDate,eventLocation,eventLeague,eventRound"/>
+            app:constraint_referenced_ids="eventHeadline,eventImageHomeTeam,eventImageAwayTeam,eventHorizontalSpacer,eventDateTitle,eventLocationTitle,eventLeagueTitle,eventRoundTitle,eventDate,eventLocation,eventLeague,eventRound"/>
 
         <TextView
             android:id="@+id/eventHeadline"
@@ -36,7 +36,7 @@
             tools:text="Team A vs Team B"/>
 
         <ImageView
-            android:id="@+id/imageHomeTeam"
+            android:id="@+id/eventImageHomeTeam"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:maxHeight="60dp"
@@ -55,14 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
-            app:layout_constraintStart_toEndOf="@+id/imageHomeTeam"
-            app:layout_constraintEnd_toStartOf="@+id/imageAwayTeam"
-            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            app:layout_constraintTop_toTopOf="@+id/eventImageHomeTeam"
+            app:layout_constraintStart_toEndOf="@+id/eventImageHomeTeam"
+            app:layout_constraintEnd_toStartOf="@+id/eventImageAwayTeam"
+            app:layout_constraintBottom_toBottomOf="@+id/eventImageHomeTeam"
             tools:text="1 : 2"/>
 
         <ImageView
-            android:id="@+id/imageAwayTeam"
+            android:id="@+id/eventImageAwayTeam"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:maxHeight="60dp"
@@ -70,18 +70,18 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintWidth_percent="0.2"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
+            app:layout_constraintTop_toTopOf="@+id/eventImageHomeTeam"
             app:layout_constraintStart_toEndOf="@+id/eventResult"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            app:layout_constraintBottom_toBottomOf="@+id/eventImageHomeTeam"
             android:contentDescription="@string/clubImageDescription"/>
 
         <View
-            android:id="@+id/spacer"
+            android:id="@+id/eventHorizontalSpacer"
             style="@style/Spacer"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            app:layout_constraintTop_toBottomOf="@id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@id/eventImageHomeTeam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/eventDateTitle"/>
@@ -92,8 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             style="@style/Subheading"
-            app:layout_constraintTop_toBottomOf="@+id/spacer"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@+id/eventHorizontalSpacer"
+            app:layout_constraintStart_toStartOf="@id/eventImageHomeTeam"
             android:text="@string/eventDate"/>
 
         <TextView
@@ -103,7 +103,7 @@
             android:layout_marginTop="16dp"
             style="@style/Subheading"
             app:layout_constraintTop_toBottomOf="@+id/eventDateTitle"
-            app:layout_constraintStart_toStartOf="@+id/imageHomeTeam"
+            app:layout_constraintStart_toStartOf="@+id/eventImageHomeTeam"
             android:text="@string/eventLocation"/>
 
         <TextView
@@ -113,7 +113,7 @@
             android:layout_marginTop="16dp"
             style="@style/Subheading"
             app:layout_constraintTop_toBottomOf="@+id/eventLocationTitle"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintStart_toStartOf="@id/eventImageHomeTeam"
             android:text="@string/eventLeague"/>
 
         <TextView
@@ -124,12 +124,12 @@
             android:layout_marginBottom="16dp"
             style="@style/Subheading"
             app:layout_constraintTop_toBottomOf="@+id/eventLeagueTitle"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintStart_toStartOf="@id/eventImageHomeTeam"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/eventRound"/>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_vertical_40_percent"
+            android:id="@+id/eventGuidelineVertical_40_percent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventDateTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
+            app:layout_constraintStart_toEndOf="@id/eventGuidelineVertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventDateTitle"/>
 
         <TextView
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventLocationTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
+            app:layout_constraintStart_toEndOf="@id/eventGuidelineVertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventLocationTitle"/>
 
         <TextView
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventLeagueTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
+            app:layout_constraintStart_toEndOf="@id/eventGuidelineVertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventLeagueTitle"/>
 
         <TextView
@@ -168,11 +168,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="@id/eventRoundTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
+            app:layout_constraintStart_toEndOf="@id/eventGuidelineVertical_40_percent"
             app:layout_constraintBottom_toBottomOf="@+id/eventRoundTitle"/>
 
         <TextView
-            android:id="@+id/errorMessage"
+            android:id="@+id/eventErrorMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Error"
