@@ -31,7 +31,7 @@
     <string name="modeDayText">In den Nachtmodus wechseln</string>
     <string name="toastModeChangedDay">In den Tagmodus gewechselt</string>
     <string name="toastModeChangedNight">In den Nachtmodus gewechselt</string>
-    <string name="toastBugList">In dieser App gibt es keine bugs, nur features 😉</string>
+    <string name="toastBugList">In dieser App gibt es keine Bugs, nur features 😉</string>
     <string name="tableWinsText">Siege: %d</string>
     <string name="tableDrawText">Unentschieden: %d</string>
     <string name="tableLossText">Niederlagen: %d</string>
