@@ -3,36 +3,22 @@ package com.example.group04.soccerapp.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Class to save data about a team in the table
  * @author Jan Stippe
  */
-public class ClubTableData {
+public class TeamTableData {
 
 	@SerializedName("loss")
 	private int loss;
 
-	@SerializedName("total")
-	private int total;
-
-	@SerializedName("goalsfor")
-	private int goalsFor;
-
-	@SerializedName("goalsagainst")
-	private int goalsAgainst;
-
 	@SerializedName("teamid")
 	private int teamId;
-
-	@SerializedName("goalsdifference")
-	private int goalsDifference;
 
 	@SerializedName("name")
 	private String name;
 
 	@SerializedName("draw")
 	private int draw;
-
-	@SerializedName("played")
-	private int played;
 
 	@SerializedName("win")
 	private int win;
@@ -41,24 +27,8 @@ public class ClubTableData {
 		return loss;
 	}
 
-	public int getTotal(){
-		return total;
-	}
-
-	public int getGoalsFor(){
-		return goalsFor;
-	}
-
-	public int getGoalsAgainst(){
-		return goalsAgainst;
-	}
-
 	public int getTeamId(){
 		return teamId;
-	}
-
-	public int getGoalsDifference(){
-		return goalsDifference;
 	}
 
 	public String getName(){
@@ -67,10 +37,6 @@ public class ClubTableData {
 
 	public int getDraw(){
 		return draw;
-	}
-
-	public int getPlayed(){
-		return played;
 	}
 
 	public int getWin(){

@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.group04.soccerapp.ClubActivity;
 import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.api.ApiHelper;
-import com.example.group04.soccerapp.model.ClubTableData;
 import com.example.group04.soccerapp.model.TableResponse;
+import com.example.group04.soccerapp.model.TeamTableData;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,9 +32,9 @@ import retrofit2.Response;
  */
 public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHolder> {
 
-    public List<ClubTableData> tableList;
+    public List<TeamTableData> tableList;
 
-    public TableAdapter(List<ClubTableData> tableList) {
+    public TableAdapter(List<TeamTableData> tableList) {
         this.tableList = tableList;
     }
 
@@ -47,9 +47,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
 
     @Override
     public void onBindViewHolder(@NonNull TableViewHolder holder, int position) {
-        ClubTableData clubTableData = tableList.get(position);
+        TeamTableData teamTableData = tableList.get(position);
 
-        Integer clubID = clubTableData.getTeamId();
+        Integer clubID = teamTableData.getTeamId();
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();
             Intent openMatchdayActivity = new Intent(context , ClubActivity.class);
@@ -77,18 +77,18 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             }
         }, actualSeason);
 
-        holder.clubName.setText(clubTableData.getName());
+        holder.clubName.setText(teamTableData.getName());
 
         String tempString;
 
-        tempString = holder.itemView.getContext().getString(R.string.tableWinsText, clubTableData.getWin());
+        tempString = holder.itemView.getContext().getString(R.string.tableWinsText, teamTableData.getWin());
         holder.wins.setText(tempString);
-        tempString = holder.itemView.getContext().getString(R.string.tableDrawText, clubTableData.getDraw());
+        tempString = holder.itemView.getContext().getString(R.string.tableDrawText, teamTableData.getDraw());
         holder.draw.setText(tempString);
-        tempString = holder.itemView.getContext().getString(R.string.tableLossText, clubTableData.getLoss());
+        tempString = holder.itemView.getContext().getString(R.string.tableLossText, teamTableData.getLoss());
         holder.loss.setText(tempString);
 
-        holder.clubPoints.setText(String.format(Locale.getDefault(), "%d", clubTableData.getWin() * 3 + clubTableData.getDraw()));
+        holder.clubPoints.setText(String.format(Locale.getDefault(), "%d", teamTableData.getWin() * 3 + teamTableData.getDraw()));
     }
 
     @Override
@@ -96,8 +96,8 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         return tableList.size();
     }
 
-    public void updateData(List<ClubTableData> clubTableData) {
-        this.tableList = clubTableData;
+    public void updateData(List<TeamTableData> teamTableData) {
+        this.tableList = teamTableData;
         notifyDataSetChanged();
     }
 

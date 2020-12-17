@@ -6,9 +6,9 @@ package com.example.group04.soccerapp.model;
  */
 public class Bet {
 
-    private int eventId;
-    private int scoreHome;
-    private int scoreAway;
+    private final int eventId;
+    private final int scoreHome;
+    private final int scoreAway;
 
     // Constructor
     public Bet(int eventId, int scoreHome, int scoreAway) {

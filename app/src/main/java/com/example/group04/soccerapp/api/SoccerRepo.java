@@ -1,8 +1,8 @@
 package com.example.group04.soccerapp.api;
 
-import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.EventsResponse;
 import com.example.group04.soccerapp.model.TableResponse;
+import com.example.group04.soccerapp.model.TeamDetailsResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -53,8 +53,8 @@ public class SoccerRepo {
     }
 
     // Get details about a team with a given id
-    public void getTeamDetails(Callback<ClubDetailsResponse> callback, int clubId) {
-        Call<ClubDetailsResponse> call = soccerApi.getTeamDetails(clubId);
+    public void getTeamDetails(Callback<TeamDetailsResponse> callback, int clubId) {
+        Call<TeamDetailsResponse> call = soccerApi.getTeamDetails(clubId);
         call.enqueue(callback);
     }
 

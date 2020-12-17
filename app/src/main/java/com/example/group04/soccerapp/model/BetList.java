@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class BetList {
 
-    private List<Bet> betList;
+    private final List<Bet> betList;
 
     // Constructor
     public BetList(List<Bet> betList) {

@@ -1,10 +1,12 @@
 package com.example.group04.soccerapp.model;
 
-import java.util.Collections;
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
+ * Class to save multiple events given by the API
  * @author Jan Stippe
  */
 public class EventsResponse {

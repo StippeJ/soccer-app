@@ -4,8 +4,8 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.group04.soccerapp.R;
-import com.example.group04.soccerapp.model.ClubDetails;
-import com.example.group04.soccerapp.model.ClubDetailsResponse;
+import com.example.group04.soccerapp.model.TeamDetails;
+import com.example.group04.soccerapp.model.TeamDetailsResponse;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -43,13 +43,13 @@ public class ApiHelper {
      * @author Jan Stippe
      */
     public void loadTeamBadge(int clubId, ImageView imageView) {
-        soccerRepo.getTeamDetails(new Callback<ClubDetailsResponse>() {
+        soccerRepo.getTeamDetails(new Callback<TeamDetailsResponse>() {
 
             @Override
-            public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
+            public void onResponse(@NotNull Call<TeamDetailsResponse> call, @NotNull Response<TeamDetailsResponse> response) {
                 if (response.isSuccessful()) {
-                    ClubDetailsResponse cdr = response.body();
-                    ClubDetails cd = cdr.getTeams().get(0);
+                    TeamDetailsResponse cdr = response.body();
+                    TeamDetails cd = cdr.getTeams().get(0);
                     Picasso.get().load(cd.getStrTeamBadge()).placeholder(R.drawable.placeholder_team_badge).into(imageView);
                 } else {
                     Log.d("ApiHelper", "onResponse not successful: " + response.code());
@@ -57,7 +57,7 @@ public class ApiHelper {
             }
 
             @Override
-            public void onFailure(@NotNull Call<ClubDetailsResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<TeamDetailsResponse> call, @NotNull Throwable t) {
                 Log.d("ApiHelper", "onFailure");
             }
 

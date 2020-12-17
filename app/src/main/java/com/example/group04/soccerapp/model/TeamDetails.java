@@ -3,12 +3,10 @@ package com.example.group04.soccerapp.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Class to represent data about a team given by the API
  * @author Jan Stippe
  */
-public class ClubDetails {
-
-	@SerializedName("idTeam")
-	private int idTeam;
+public class TeamDetails {
 
 	@SerializedName("strTeam")
 	private String strTeam;
@@ -42,10 +40,6 @@ public class ClubDetails {
 
 	@SerializedName("strTwitter")
 	private String strTwitter;
-
-	public int getIdTeam(){
-		return idTeam;
-	}
 
 	public String getStrTeam(){
 		return strTeam;

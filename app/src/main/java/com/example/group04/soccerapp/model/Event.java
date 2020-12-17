@@ -7,24 +7,13 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * Class to save data about an event
  * @author Jan Stippe
  */
 public class Event {
 
     @SerializedName("idEvent")
     private int idEvent;
-
-    @SerializedName("dateEvent")
-    private String dateEvent;
-
-    @SerializedName("strOfficial")
-    private String strOfficial;
-
-    @SerializedName("intHomeShots")
-    private int intHomeShots;
-
-    @SerializedName("idLeague")
-    private int idLeague;
 
     @SerializedName("intRound")
     private int intRound;
@@ -41,29 +30,11 @@ public class Event {
     @SerializedName("strAwayTeam")
     private String strAwayTeam;
 
-    @SerializedName("strDate")
-    private String strDate;
-
     @SerializedName("idAwayTeam")
     private int idAwayTeam;
 
-    @SerializedName("dateEventLocal")
-    private String dateEventLocal;
-
-    @SerializedName("strTime")
-    private String strTime;
-
     @SerializedName("strVenue")
     private String strVenue;
-
-    @SerializedName("strTimeLocal")
-    private String strTimeLocal;
-
-    @SerializedName("strSeason")
-    private String strSeason;
-
-    @SerializedName("strEventAlternate")
-    private String strEventAlternate;
 
     @SerializedName("strEvent")
     private String strEvent;
@@ -71,17 +42,11 @@ public class Event {
     @SerializedName("strHomeTeam")
     private String strHomeTeam;
 
-    @SerializedName("strThumb")
-    private String strThumb;
-
     @SerializedName("strLeague")
     private String strLeague;
 
     @SerializedName("intAwayScore")
     private Integer intAwayScore;
-
-    @SerializedName("strStatus")
-    private String strStatus;
 
     /**
      * Get the local date and time of the event in a suitable format
@@ -91,18 +56,6 @@ public class Event {
     public String getFormattedDateAndTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault());
         return dateFormat.format(getDateTimestamp());
-    }
-
-    public String getStrOfficial() {
-        return strOfficial;
-    }
-
-    public int getIntHomeShots() {
-        return intHomeShots;
-    }
-
-    public int getIdLeague() {
-        return idLeague;
     }
 
     public int getIdEvent() {
@@ -121,10 +74,6 @@ public class Event {
         return intHomeScore;
     }
 
-    public String getDateEvent() {
-        return dateEvent;
-    }
-
     public Date getDateTimestamp() {
         return dateTimestamp;
     }
@@ -133,36 +82,12 @@ public class Event {
         return strAwayTeam;
     }
 
-    public String getStrDate() {
-        return strDate;
-    }
-
     public int getIdAwayTeam() {
         return idAwayTeam;
     }
 
-    public String getDateEventLocal() {
-        return dateEventLocal;
-    }
-
-    public String getStrTime() {
-        return strTime;
-    }
-
     public String getStrVenue() {
         return strVenue;
-    }
-
-    public String getStrTimeLocal() {
-        return strTimeLocal;
-    }
-
-    public String getStrSeason() {
-        return strSeason;
-    }
-
-    public String getStrEventAlternate() {
-        return strEventAlternate;
     }
 
     public String getStrEvent() {
@@ -173,20 +98,12 @@ public class Event {
         return strHomeTeam;
     }
 
-    public String getStrThumb() {
-        return strThumb;
-    }
-
     public String getStrLeague() {
         return strLeague;
     }
 
     public Integer getIntAwayScore() {
         return intAwayScore;
-    }
-
-    public String getStrStatus() {
-        return strStatus;
     }
 
 }

@@ -1,7 +1,8 @@
 package com.example.group04.soccerapp.model;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * @author Jan Stippe
@@ -9,9 +10,9 @@ import com.google.gson.annotations.SerializedName;
 public class TableResponse {
 
 	@SerializedName("table")
-	private List<ClubTableData> table;
+	private List<TeamTableData> table;
 
-	public List<ClubTableData> getTable(){
+	public List<TeamTableData> getTable(){
 		return table;
 	}
 

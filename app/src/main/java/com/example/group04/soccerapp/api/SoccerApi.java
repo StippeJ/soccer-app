@@ -1,8 +1,8 @@
 package com.example.group04.soccerapp.api;
 
-import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.example.group04.soccerapp.model.EventsResponse;
 import com.example.group04.soccerapp.model.TableResponse;
+import com.example.group04.soccerapp.model.TeamDetailsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,7 +18,7 @@ public interface SoccerApi {
     Call<TableResponse> getTable(@Query("l") int leagueId, @Query("s") String season);
 
     @GET("lookupteam.php")
-    Call<ClubDetailsResponse> getTeamDetails(@Query("id") int clubId);
+    Call<TeamDetailsResponse> getTeamDetails(@Query("id") int clubId);
 
     @GET("eventsnextleague.php")
     Call<EventsResponse> getNextEventsOfLeague(@Query("id") int leagueId);

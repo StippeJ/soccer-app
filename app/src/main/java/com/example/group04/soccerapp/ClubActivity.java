@@ -12,8 +12,8 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.Group;
 
 import com.example.group04.soccerapp.api.ApiHelper;
-import com.example.group04.soccerapp.model.ClubDetails;
-import com.example.group04.soccerapp.model.ClubDetailsResponse;
+import com.example.group04.soccerapp.model.TeamDetails;
+import com.example.group04.soccerapp.model.TeamDetailsResponse;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -116,12 +116,12 @@ public class ClubActivity extends BaseActivity {
         contentGroup.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
-        apiHelper.getSoccerRepo().getTeamDetails(new Callback<ClubDetailsResponse>() {
+        apiHelper.getSoccerRepo().getTeamDetails(new Callback<TeamDetailsResponse>() {
             @Override
-            public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
+            public void onResponse(@NotNull Call<TeamDetailsResponse> call, @NotNull Response<TeamDetailsResponse> response) {
                 if(response.isSuccessful()) {
-                    ClubDetailsResponse cdRes = response.body();
-                    ClubDetails cd = cdRes.getTeams().get(0);
+                    TeamDetailsResponse cdRes = response.body();
+                    TeamDetails cd = cdRes.getTeams().get(0);
                     fillViews(cd);
                     contentGroup.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.INVISIBLE);
@@ -130,7 +130,7 @@ public class ClubActivity extends BaseActivity {
                 }
             }
 
-            public void onFailure(@NotNull Call<ClubDetailsResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<TeamDetailsResponse> call, @NotNull Throwable t) {
                 showError(false, true);
             }
         }, clubID);
@@ -141,7 +141,7 @@ public class ClubActivity extends BaseActivity {
      * @param cd API provided Data about one club
      * @author Tim-Loris Deinert
      */
-    public void fillViews(ClubDetails cd) {
+    public void fillViews(TeamDetails cd) {
         //Fill the Views with the API Data
         teamName.setText(cd.getStrTeam());
         Picasso.get().load(cd.getStrTeamBadge()).into(teamBadge);
