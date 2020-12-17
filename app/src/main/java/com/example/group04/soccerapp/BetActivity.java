@@ -42,16 +42,16 @@ public class BetActivity extends BaseActivity {
 
     // Views to show data from API
     ProgressBar progressBar;
-    Group eventGroup;
+    Group viewGroup;
     ImageView imageHomeTeam;
     ImageView imageAwayTeam;
-    EditText editTextScoreHome;
-    EditText editTextScoreAway;
-    TextView eventHeadline;
-    TextView eventDate;
-    TextView eventLocation;
-    TextView eventLeague;
-    TextView eventRound;
+    EditText scoreHome;
+    EditText scoreAway;
+    TextView headline;
+    TextView date;
+    TextView location;
+    TextView league;
+    TextView round;
     TextView errorMessage;
     Button saveBet;
 
@@ -60,21 +60,23 @@ public class BetActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bet);
 
+        // Create new ApiHelper-object
         apiHelper = new ApiHelper();
 
+        // Reference Views of the layout
         progressBar = findViewById(R.id.betProgressSpinner);
-        eventGroup = findViewById(R.id.eventGroup);
-        imageHomeTeam = findViewById(R.id.imageHomeTeam);
-        imageAwayTeam = findViewById(R.id.imageAwayTeam);
-        editTextScoreHome = findViewById(R.id.eventScoreHome);
-        editTextScoreAway = findViewById(R.id.eventScoreAway);
-        eventHeadline = findViewById(R.id.eventHeadline);
-        eventDate = findViewById(R.id.eventDate);
-        eventLocation = findViewById(R.id.eventLocation);
-        eventLeague = findViewById(R.id.eventLeague);
-        eventRound = findViewById(R.id.eventRound);
-        errorMessage = findViewById(R.id.errorMessage);
-        saveBet = findViewById(R.id.saveBetButton);
+        viewGroup = findViewById(R.id.betGroup);
+        imageHomeTeam = findViewById(R.id.betImageHomeTeam);
+        imageAwayTeam = findViewById(R.id.betImageAwayTeam);
+        scoreHome = findViewById(R.id.betScoreHome);
+        scoreAway = findViewById(R.id.betScoreAway);
+        headline = findViewById(R.id.betHeadline);
+        date = findViewById(R.id.betDate);
+        location = findViewById(R.id.betLocation);
+        league = findViewById(R.id.betLeague);
+        round = findViewById(R.id.betRound);
+        errorMessage = findViewById(R.id.betErrorMessage);
+        saveBet = findViewById(R.id.betSaveButton);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -82,7 +84,7 @@ public class BetActivity extends BaseActivity {
 
             // show a progressbar
             progressBar.setVisibility(View.VISIBLE);
-            eventGroup.setVisibility(View.INVISIBLE);
+            viewGroup.setVisibility(View.INVISIBLE);
 
             // request data from api
             apiHelper.getSoccerRepo().getEventById(new Callback<EventsResponse>() {
@@ -93,34 +95,20 @@ public class BetActivity extends BaseActivity {
                         EventsResponse er = response.body();
                         currentEvent = er.getEvents().get(0);
 
-                        // Load the two images
-                        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
-                        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
-
-                        eventHeadline.setText(currentEvent.getStrEvent());
-                        eventDate.setText(currentEvent.getFormattedDateAndTime());
-                        eventLocation.setText(currentEvent.getStrVenue());
-                        eventLeague.setText(currentEvent.getStrLeague());
-                        eventRound.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
+                        fillViewsWithData();
 
                         progressBar.setVisibility(View.INVISIBLE);
-                        eventGroup.setVisibility(View.VISIBLE);
+                        viewGroup.setVisibility(View.VISIBLE);
                     } else {
                         // Show error message
-                        progressBar.setVisibility(View.INVISIBLE);
-                        eventGroup.setVisibility(View.INVISIBLE);
-                        errorMessage.setText(getString(R.string.apiResponseError));
-                        errorMessage.setVisibility(View.VISIBLE);
+                        showErrorMessage(R.string.apiResponseError);
                     }
                 }
 
                 @Override
                 public void onFailure(@NotNull Call<EventsResponse> call, @NotNull Throwable t) {
                     // Show error message
-                    progressBar.setVisibility(View.INVISIBLE);
-                    eventGroup.setVisibility(View.INVISIBLE);
-                    errorMessage.setText(getString(R.string.apiErrorOnFailure));
-                    errorMessage.setVisibility(View.VISIBLE);
+                    showErrorMessage(R.string.apiErrorOnFailure);
                 }
             }, eventId);
         }
@@ -172,26 +160,66 @@ public class BetActivity extends BaseActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        String stringScoreHome = editTextScoreHome.getText().toString();
-        String stringScoreAway = editTextScoreAway.getText().toString();
+        // Read the content of the textboxes
+        String stringScoreHome = scoreHome.getText().toString();
+        String stringScoreAway = scoreAway.getText().toString();
 
+        // Check if boxes were filled by user
         if (stringScoreHome.length() == 0 || stringScoreAway.length() == 0) {
             Toast.makeText(this, R.string.emptyEditText, Toast.LENGTH_SHORT).show();
         } else {
+            // Cast scores to int
             int scoreHome = Integer.parseInt(stringScoreHome);
             int scoreAway = Integer.parseInt(stringScoreAway);
 
+            // Create a new bet
             Bet bet = new Bet(currentEvent.getIdEvent(), scoreHome, scoreAway);
             Gson gson = new Gson();
 
+            // Get currently saved bets and add the new one to the list
             BetList betList = getBets();
             betList.addBet(bet);
 
+            // Serialize bets to json
             String jsonBets = gson.toJson(betList);
 
+            // Save json to SharedPreferences
             editor.putString(BET_LIST, jsonBets);
             editor.apply();
+
+            // Show success-message
+            Toast.makeText(this, R.string.betSaved, Toast.LENGTH_SHORT).show();
+
             finish();
         }
+    }
+
+    /**
+     * Hide all views besides the error-message
+     * Set a given text for the error-message-view
+     * @param errorMessageId Id of the string that should be shown
+     * @author Jan Stippe
+     */
+    private void showErrorMessage(int errorMessageId) {
+        progressBar.setVisibility(View.INVISIBLE);
+        viewGroup.setVisibility(View.INVISIBLE);
+        errorMessage.setText(getString(errorMessageId));
+        errorMessage.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Load the currentEvent's data into the Views
+     * @author Jan Stippe
+     */
+    private void fillViewsWithData() {
+        // Load the two images
+        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
+        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
+
+        headline.setText(currentEvent.getStrEvent());
+        date.setText(currentEvent.getFormattedDateAndTime());
+        location.setText(currentEvent.getStrVenue());
+        league.setText(currentEvent.getStrLeague());
+        round.setText(String.format(Locale.getDefault(),"%d", currentEvent.getIntRound()));
     }
 }

@@ -23,7 +23,7 @@
     <string name="eventLocation">Location:</string>
     <string name="eventLeague">League:</string>
     <string name="eventRound">Round:</string>
-    <string name="newsText">Latest matchday results</string>
+    <string name="newsText">Latest match results</string>
     <string name="bundesligaButtonText">To the Bundesliga</string>
     <string name="moreIcon">More options </string>
     <string name="aboutIcon">Infos about the app</string>
@@ -43,4 +43,7 @@
     <string name="saveBet">Save bet</string>
     <string name="noBets">There currently are no bets.</string>
     <string name="emptyEditText">Please fill in the textboxes.</string>
+    <string name="betSaved">Bet was saved.</string>
+    <string name="eventScoreSpacer" translatable="false">:</string>
+    <string name="betPlaceholder" translatable="false">\?</string>
 </resources>

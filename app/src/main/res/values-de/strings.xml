@@ -18,7 +18,7 @@
     <string name="eventLocation">Ort:</string>
     <string name="eventLeague">Liga:</string>
     <string name="eventRound">Spieltag:</string>
-    <string name="newsText">Die neusten Spieltagsergebnisse</string>
+    <string name="newsText">Die neusten Spielergebnisse</string>
     <string name="bundesligaButtonText">Zur Bundesliga</string>
     <string name="moreIcon">Mehr Optionen</string>
     <string name="aboutIcon">Infos über die App</string>
@@ -35,7 +35,8 @@
     <string name="tableWinsText">Siege: %d</string>
     <string name="tableDrawText">Unentschieden: %d</string>
     <string name="tableLossText">Niederlagen: %d</string>
-    <string name="saveBet">Tipps speichern</string>
+    <string name="saveBet">Tipp speichern</string>
     <string name="noBets">Es existieren noch keine Tipps.</string>
     <string name="emptyEditText">Bitte füllen sie die Textfelder aus.</string>
+    <string name="betSaved">Tipp wurde gespeichert</string>
 </resources>

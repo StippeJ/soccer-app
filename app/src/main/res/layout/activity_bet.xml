@@ -21,23 +21,23 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Group
-            android:id="@+id/eventGroup"
+            android:id="@+id/betGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:constraint_referenced_ids="eventHeadline,imageHomeTeam,eventScoreHome,eventScoreSpacer,eventScoreAway,imageAwayTeam,spacer,eventDateTitle,eventLocationTitle,eventLeagueTitle,eventRoundTitle,eventDate,eventLocation,eventLeague,eventRound,saveBetButton"/>
+            app:constraint_referenced_ids="betHeadline,betImageHomeTeam,betScoreHome,betResultSpacer,betScoreAway,betImageAwayTeam,betHorizontalSpacer,betDateTitle,betLocationTitle,betLeagueTitle,betRoundTitle,betDate,betLocation,betLeague,betRound,betSaveButton"/>
 
         <TextView
-            android:id="@+id/eventHeadline"
+            android:id="@+id/betHeadline"
             style="@style/Headline"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/imageHomeTeam"
+            app:layout_constraintBottom_toTopOf="@+id/betImageHomeTeam"
             tools:text="Team A vs Team B"/>
 
         <ImageView
-            android:id="@+id/imageHomeTeam"
+            android:id="@+id/betImageHomeTeam"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:maxHeight="60dp"
@@ -46,46 +46,50 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintWidth_percent="0.15"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@+id/eventHeadline"
+            app:layout_constraintTop_toBottomOf="@+id/betHeadline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/eventScoreHome"
-            app:layout_constraintBottom_toTopOf="@+id/spacer"
+            app:layout_constraintEnd_toStartOf="@+id/betScoreHome"
+            app:layout_constraintBottom_toTopOf="@+id/betHorizontalSpacer"
             android:contentDescription="@string/clubImageDescription"/>
 
         <EditText
-            android:id="@+id/eventScoreHome"
+            android:id="@+id/betScoreHome"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
-            app:layout_constraintStart_toEndOf="@+id/imageHomeTeam"
-            app:layout_constraintEnd_toStartOf="@+id/eventScoreSpacer"
-            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            android:hint="@string/betPlaceholder"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="@+id/betImageHomeTeam"
+            app:layout_constraintStart_toEndOf="@+id/betImageHomeTeam"
+            app:layout_constraintEnd_toStartOf="@+id/betResultSpacer"
+            app:layout_constraintBottom_toBottomOf="@+id/betImageHomeTeam"
             tools:text="1"/>
 
         <TextView
-            android:id="@+id/eventScoreSpacer"
+            android:id="@+id/betResultSpacer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@+id/eventScoreHome"
-            app:layout_constraintStart_toEndOf="@+id/eventScoreHome"
-            app:layout_constraintEnd_toStartOf="@+id/eventScoreAway"
-            app:layout_constraintBottom_toBottomOf="@+id/eventScoreHome"
-            android:text=":"/>
+            app:layout_constraintTop_toTopOf="@+id/betScoreHome"
+            app:layout_constraintStart_toEndOf="@+id/betScoreHome"
+            app:layout_constraintEnd_toStartOf="@+id/betScoreAway"
+            app:layout_constraintBottom_toBottomOf="@+id/betScoreHome"
+            android:text="@string/eventScoreSpacer"/>
 
         <EditText
-            android:id="@+id/eventScoreAway"
+            android:id="@+id/betScoreAway"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            app:layout_constraintTop_toTopOf="@+id/eventScoreHome"
-            app:layout_constraintStart_toEndOf="@+id/eventScoreSpacer"
-            app:layout_constraintEnd_toStartOf="@+id/imageAwayTeam"
-            app:layout_constraintBottom_toBottomOf="@+id/eventScoreHome"
+            android:hint="@string/betPlaceholder"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="@+id/betScoreHome"
+            app:layout_constraintStart_toEndOf="@+id/betResultSpacer"
+            app:layout_constraintEnd_toStartOf="@+id/betImageAwayTeam"
+            app:layout_constraintBottom_toBottomOf="@+id/betScoreHome"
             tools:text="2"/>
 
         <ImageView
-            android:id="@+id/imageAwayTeam"
+            android:id="@+id/betImageAwayTeam"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:maxHeight="60dp"
@@ -93,109 +97,109 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintWidth_percent="0.15"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toTopOf="@+id/imageHomeTeam"
-            app:layout_constraintStart_toEndOf="@+id/eventScoreAway"
+            app:layout_constraintTop_toTopOf="@+id/betImageHomeTeam"
+            app:layout_constraintStart_toEndOf="@+id/betScoreAway"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/imageHomeTeam"
+            app:layout_constraintBottom_toBottomOf="@+id/betImageHomeTeam"
             android:contentDescription="@string/clubImageDescription"/>
 
         <View
-            android:id="@+id/spacer"
+            android:id="@+id/betHorizontalSpacer"
             style="@style/Spacer"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            app:layout_constraintTop_toBottomOf="@id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@id/betImageHomeTeam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/eventDateTitle"/>
+            app:layout_constraintBottom_toTopOf="@id/betDateTitle"/>
 
         <TextView
-            android:id="@+id/eventDateTitle"
+            android:id="@+id/betDateTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             style="@style/Subheading"
-            app:layout_constraintTop_toBottomOf="@+id/spacer"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@+id/betHorizontalSpacer"
+            app:layout_constraintStart_toStartOf="@id/betImageHomeTeam"
             android:text="@string/eventDate"/>
 
         <TextView
-            android:id="@+id/eventLocationTitle"
+            android:id="@+id/betLocationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             style="@style/Subheading"
-            app:layout_constraintTop_toBottomOf="@+id/eventDateTitle"
-            app:layout_constraintStart_toStartOf="@+id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@+id/betDateTitle"
+            app:layout_constraintStart_toStartOf="@+id/betImageHomeTeam"
             android:text="@string/eventLocation"/>
 
         <TextView
-            android:id="@+id/eventLeagueTitle"
+            android:id="@+id/betLeagueTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             style="@style/Subheading"
-            app:layout_constraintTop_toBottomOf="@+id/eventLocationTitle"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
+            app:layout_constraintTop_toBottomOf="@+id/betLocationTitle"
+            app:layout_constraintStart_toStartOf="@id/betImageHomeTeam"
             android:text="@string/eventLeague"/>
 
         <TextView
-            android:id="@+id/eventRoundTitle"
+            android:id="@+id/betRoundTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             style="@style/Subheading"
-            app:layout_constraintTop_toBottomOf="@+id/eventLeagueTitle"
-            app:layout_constraintStart_toStartOf="@id/imageHomeTeam"
-            app:layout_constraintBottom_toTopOf="@+id/saveBetButton"
+            app:layout_constraintTop_toBottomOf="@+id/betLeagueTitle"
+            app:layout_constraintStart_toStartOf="@id/betImageHomeTeam"
+            app:layout_constraintBottom_toTopOf="@+id/betSaveButton"
             android:text="@string/eventRound"/>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_vertical_40_percent"
+            android:id="@+id/betGuidelineVertical_40_percent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.4"/>
 
         <TextView
-            android:id="@+id/eventDate"
+            android:id="@+id/betDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintTop_toTopOf="@id/eventDateTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
-            app:layout_constraintBottom_toBottomOf="@+id/eventDateTitle"/>
+            app:layout_constraintTop_toTopOf="@id/betDateTitle"
+            app:layout_constraintStart_toEndOf="@id/betGuidelineVertical_40_percent"
+            app:layout_constraintBottom_toBottomOf="@+id/betDateTitle"/>
 
         <TextView
-            android:id="@+id/eventLocation"
+            android:id="@+id/betLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintTop_toTopOf="@id/eventLocationTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
-            app:layout_constraintBottom_toBottomOf="@+id/eventLocationTitle"/>
+            app:layout_constraintTop_toTopOf="@id/betLocationTitle"
+            app:layout_constraintStart_toEndOf="@id/betGuidelineVertical_40_percent"
+            app:layout_constraintBottom_toBottomOf="@+id/betLocationTitle"/>
 
         <TextView
-            android:id="@+id/eventLeague"
+            android:id="@+id/betLeague"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintTop_toTopOf="@id/eventLeagueTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
-            app:layout_constraintBottom_toBottomOf="@+id/eventLeagueTitle"/>
+            app:layout_constraintTop_toTopOf="@id/betLeagueTitle"
+            app:layout_constraintStart_toEndOf="@id/betGuidelineVertical_40_percent"
+            app:layout_constraintBottom_toBottomOf="@+id/betLeagueTitle"/>
 
         <TextView
-            android:id="@+id/eventRound"
+            android:id="@+id/betRound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintTop_toTopOf="@id/eventRoundTitle"
-            app:layout_constraintStart_toEndOf="@id/guideline_vertical_40_percent"
-            app:layout_constraintBottom_toBottomOf="@+id/eventRoundTitle"/>
+            app:layout_constraintTop_toTopOf="@id/betRoundTitle"
+            app:layout_constraintStart_toEndOf="@id/betGuidelineVertical_40_percent"
+            app:layout_constraintBottom_toBottomOf="@+id/betRoundTitle"/>
 
         <TextView
-            android:id="@+id/errorMessage"
+            android:id="@+id/betErrorMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Error"
@@ -207,13 +211,13 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
-            android:id="@+id/saveBetButton"
+            android:id="@+id/betSaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/saveBet"
-            app:layout_constraintTop_toBottomOf="@+id/eventRoundTitle"
+            app:layout_constraintTop_toBottomOf="@+id/betRoundTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
