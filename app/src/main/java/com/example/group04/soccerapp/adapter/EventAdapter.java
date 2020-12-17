@@ -70,8 +70,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventVie
 
         // Load the images
         ApiHelper apiHelper = new ApiHelper();
-        apiHelper.loadClubBadge(event.getIdHomeTeam(), holder.imageHomeTeam);
-        apiHelper.loadClubBadge(event.getIdAwayTeam(), holder.imageAwayTeam);
+        apiHelper.loadTeamBadge(event.getIdHomeTeam(), holder.imageHomeTeam);
+        apiHelper.loadTeamBadge(event.getIdAwayTeam(), holder.imageAwayTeam);
     }
 
     @Override

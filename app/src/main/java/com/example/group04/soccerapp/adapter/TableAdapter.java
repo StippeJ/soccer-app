@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +57,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             context.startActivity(openMatchdayActivity);
         });
 
-        holder.tablePosition.setText(Integer.toString(position + 1));
+        holder.tablePosition.setText(String.format(Locale.getDefault(), "%d", position + 1));
 
         int actualYear = Calendar.getInstance().get(Calendar.YEAR);
         String actualSeason = actualYear + "-" + ++actualYear;
@@ -66,7 +67,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
             @Override
             public void onResponse(@NotNull Call<TableResponse> call, @NotNull Response<TableResponse> response) {
                 if(response.isSuccessful()) {
-                    apiHelper.loadClubBadge(clubID, holder.clubIcon);
+                    apiHelper.loadTeamBadge(clubID, holder.clubIcon);
                 }
             }
 
@@ -87,7 +88,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         tempString = holder.itemView.getContext().getString(R.string.tableLossText, clubTableData.getLoss());
         holder.loss.setText(tempString);
 
-        holder.clubPoints.setText(Integer.toString(clubTableData.getWin() * 3 + clubTableData.getDraw()));
+        holder.clubPoints.setText(String.format(Locale.getDefault(), "%d", clubTableData.getWin() * 3 + clubTableData.getDraw()));
     }
 
     @Override

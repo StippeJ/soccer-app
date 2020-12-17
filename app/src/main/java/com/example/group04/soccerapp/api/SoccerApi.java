@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
+ * Interface to implemtent API-requests
  * @author Jan Stippe
  */
 public interface SoccerApi {
@@ -17,19 +18,13 @@ public interface SoccerApi {
     Call<TableResponse> getTable(@Query("l") int leagueId, @Query("s") String season);
 
     @GET("lookupteam.php")
-    Call<ClubDetailsResponse> getClubDetails(@Query("id") int clubId);
+    Call<ClubDetailsResponse> getTeamDetails(@Query("id") int clubId);
 
     @GET("eventsnextleague.php")
     Call<EventsResponse> getNextEventsOfLeague(@Query("id") int leagueId);
 
     @GET("eventspastleague.php")
     Call<EventsResponse> getLastEventsOfLeague(@Query("id") int leagueId);
-
-    @GET("eventsnext.php")
-    Call<EventsResponse> getNextEventsOfClub(@Query("id") int clubId);
-
-    @GET("eventslast.php")
-    Call<EventsResponse> getLastEventsOfClub(@Query("id") int clubId);
 
     @GET("lookupevent.php")
     Call<EventsResponse> getEventById(@Query("id") int eventId);

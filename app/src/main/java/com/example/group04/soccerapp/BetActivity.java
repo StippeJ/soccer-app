@@ -1,7 +1,5 @@
 package com.example.group04.soccerapp;
 
-import androidx.constraintlayout.widget.Group;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.constraintlayout.widget.Group;
 
 import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.Bet;
@@ -94,8 +94,8 @@ public class BetActivity extends BaseActivity {
                         currentEvent = er.getEvents().get(0);
 
                         // Load the two images
-                        apiHelper.loadClubBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
-                        apiHelper.loadClubBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
+                        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
+                        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
 
                         eventHeadline.setText(currentEvent.getStrEvent());
                         eventDate.setText(currentEvent.getFormattedDateAndTime());

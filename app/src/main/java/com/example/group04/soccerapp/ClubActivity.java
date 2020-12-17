@@ -1,7 +1,5 @@
 package com.example.group04.soccerapp;
 
-import androidx.constraintlayout.widget.Group;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.Group;
 
 import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.ClubDetails;
@@ -116,7 +116,7 @@ public class ClubActivity extends BaseActivity {
         contentGroup.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
-        apiHelper.getSoccerRepo().getClubDetails(new Callback<ClubDetailsResponse>() {
+        apiHelper.getSoccerRepo().getTeamDetails(new Callback<ClubDetailsResponse>() {
             @Override
             public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
                 if(response.isSuccessful()) {

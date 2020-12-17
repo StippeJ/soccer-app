@@ -3,6 +3,7 @@ package com.example.group04.soccerapp.api;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.group04.soccerapp.R;
 import com.example.group04.soccerapp.model.ClubDetails;
 import com.example.group04.soccerapp.model.ClubDetailsResponse;
 import com.squareup.picasso.Picasso;
@@ -13,6 +14,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Helper-Class for API-requests
+ * Provides a method to request club-details and load an image into a given ImageView
+ * @author Jan Stippe
+ */
 public class ApiHelper {
 
     private final SoccerRepo soccerRepo;
@@ -36,15 +42,15 @@ public class ApiHelper {
      * @param imageView ImageView into which the image will be loaded
      * @author Jan Stippe
      */
-    public void loadClubBadge(int clubId, ImageView imageView) {
-        soccerRepo.getClubDetails(new Callback<ClubDetailsResponse>() {
+    public void loadTeamBadge(int clubId, ImageView imageView) {
+        soccerRepo.getTeamDetails(new Callback<ClubDetailsResponse>() {
 
             @Override
             public void onResponse(@NotNull Call<ClubDetailsResponse> call, @NotNull Response<ClubDetailsResponse> response) {
                 if (response.isSuccessful()) {
                     ClubDetailsResponse cdr = response.body();
                     ClubDetails cd = cdr.getTeams().get(0);
-                    Picasso.get().load(cd.getStrTeamBadge()).into(imageView);
+                    Picasso.get().load(cd.getStrTeamBadge()).placeholder(R.drawable.placeholder_team_badge).into(imageView);
                 } else {
                     Log.d("ApiHelper", "onResponse not successful: " + response.code());
                 }

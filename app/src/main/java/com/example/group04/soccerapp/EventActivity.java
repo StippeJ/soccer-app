@@ -1,13 +1,13 @@
 package com.example.group04.soccerapp;
 
-import androidx.constraintlayout.widget.Group;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.Group;
 
 import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.Event;
@@ -87,8 +87,8 @@ public class EventActivity extends BaseActivity {
                         currentEvent = er.getEvents().get(0);
 
                         // Load the two images
-                        apiHelper.loadClubBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
-                        apiHelper.loadClubBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
+                        apiHelper.loadTeamBadge(currentEvent.getIdHomeTeam(), imageHomeTeam);
+                        apiHelper.loadTeamBadge(currentEvent.getIdAwayTeam(), imageAwayTeam);
 
                         // Show the result of the current event (if match is finished)
                         if (currentEvent.getIntHomeScore() != null && currentEvent.getIntAwayScore() != null) {

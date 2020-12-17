@@ -102,8 +102,8 @@ public class BetAdapter extends RecyclerView.Adapter<BetAdapter.BetViewHolder> {
                     }
 
                     // Load the badges of the clubs
-                    apiHelper.loadClubBadge(event.getIdHomeTeam(), holder.imageHomeTeam);
-                    apiHelper.loadClubBadge(event.getIdAwayTeam(), holder.imageAwayTeam);
+                    apiHelper.loadTeamBadge(event.getIdHomeTeam(), holder.imageHomeTeam);
+                    apiHelper.loadTeamBadge(event.getIdAwayTeam(), holder.imageAwayTeam);
 
                     // Show information about the teams and the bet for the match
                     holder.homeClub.setText(event.getStrHomeTeam());
