@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClubActivity">
+    tools:context=".TeamActivity">
 
     <ProgressBar
-        android:id="@+id/clubProgressSpinner"
+        android:id="@+id/teamProgressSpinner"
         style="@style/ProgressBarStyle"
         app:layout_constraintWidth_percent="0.2"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
-        android:id="@+id/clubErrorText"
+        android:id="@+id/teamErrorText"
         style="@style/Error"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
@@ -29,13 +29,13 @@
         tools:text="Insert error here!"/>
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/clubContentGroup"
+        android:id="@+id/teamContentGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="infoScrollView,clubName"/>
+        app:constraint_referenced_ids="teamInfoScrollView,teamName"/>
 
     <TextView
-        android:id="@+id/clubName"
+        android:id="@+id/teamName"
         style="@style/Headline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,10 +43,10 @@
         tools:text="Borussia Dortmund"/>
 
     <ScrollView
-        android:id="@+id/infoScrollView"
+        android:id="@+id/teamInfoScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/clubName"
+        app:layout_constraintTop_toBottomOf="@id/teamName"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,14 +55,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_vertical"
+                android:id="@+id/teamGuidelineVertical_25_percent"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.25" />
 
             <ImageView
-                android:id="@+id/clubImage"
+                android:id="@+id/teamImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="30dp"
@@ -75,139 +75,139 @@
                 tools:src="@drawable/test_badge"/>
 
             <View
-                android:id="@+id/spacer1"
+                android:id="@+id/teamSpacerTop"
                 style="@style/Spacer"
                 android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/clubImage"
-                app:layout_constraintBottom_toTopOf="@id/infoSubheading"
+                app:layout_constraintTop_toBottomOf="@id/teamImage"
+                app:layout_constraintBottom_toTopOf="@id/teamInfoSubheading"
                 app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
-                android:id="@+id/infoSubheading"
+                android:id="@+id/teamInfoSubheading"
                 style="@style/Subheading"
                 android:text="@string/infoSubheading"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/spacer1"
+                app:layout_constraintTop_toBottomOf="@id/teamSpacerTop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
             <ImageView
-                android:id="@+id/iconFacebook"
+                android:id="@+id/teamIconFacebook"
                 android:layout_width="30dp"
                 android:layout_height="0dp"
                 android:src="@drawable/icon_facebook"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/guideline_vertical"
-                app:layout_constraintTop_toTopOf="@id/spacer1"
-                app:layout_constraintBottom_toTopOf="@id/iconTwitter"
+                app:layout_constraintRight_toLeftOf="@id/teamGuidelineVertical_25_percent"
+                app:layout_constraintTop_toTopOf="@id/teamSpacerTop"
+                app:layout_constraintBottom_toTopOf="@id/teamIconTwitter"
                 app:layout_constraintDimensionRatio="1:1"
                 android:contentDescription="@string/iconFacebookDescription" />
 
             <ImageView
-                android:id="@+id/iconTwitter"
+                android:id="@+id/teamIconTwitter"
                 android:layout_width="30dp"
                 android:layout_height="0dp"
                 android:src="@drawable/icon_twitter"
                 android:layout_marginTop="20dp"
-                app:layout_constraintLeft_toLeftOf="@id/iconFacebook"
-                app:layout_constraintTop_toBottomOf="@id/iconFacebook"
-                app:layout_constraintBottom_toTopOf="@id/iconInstagram"
+                app:layout_constraintLeft_toLeftOf="@id/teamIconFacebook"
+                app:layout_constraintTop_toBottomOf="@id/teamIconFacebook"
+                app:layout_constraintBottom_toTopOf="@id/teamIconInstagram"
                 app:layout_constraintDimensionRatio="1:1"
                 android:contentDescription="@string/iconTwitterDescription" />
 
             <ImageView
-                android:id="@+id/iconInstagram"
+                android:id="@+id/teamIconInstagram"
                 android:layout_width="30dp"
                 android:layout_height="0dp"
                 android:src="@drawable/icon_instagram"
                 android:layout_marginTop="20dp"
-                app:layout_constraintLeft_toLeftOf="@id/iconFacebook"
-                app:layout_constraintTop_toBottomOf="@id/iconTwitter"
-                app:layout_constraintBottom_toBottomOf="@id/spacer2"
+                app:layout_constraintLeft_toLeftOf="@id/teamIconFacebook"
+                app:layout_constraintTop_toBottomOf="@id/teamIconTwitter"
+                app:layout_constraintBottom_toBottomOf="@id/teamSpacerBottom"
                 app:layout_constraintDimensionRatio="1:1"
                 android:contentDescription="@string/iconInstagramDescription"/>
 
             <TextView
-                android:id="@+id/foundedHeadline"
+                android:id="@+id/teamFoundedHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/foundedHeadline"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/infoSubheading"
-                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"/>
+                app:layout_constraintTop_toBottomOf="@id/teamInfoSubheading"
+                app:layout_constraintLeft_toRightOf="@id/teamGuidelineVertical_25_percent"/>
 
             <TextView
-                android:id="@+id/foundedYear"
+                android:id="@+id/teamFoundedYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/foundedHeadline"
-                app:layout_constraintLeft_toLeftOf="@id/foundedHeadline"
+                app:layout_constraintTop_toBottomOf="@id/teamFoundedHeadline"
+                app:layout_constraintLeft_toLeftOf="@id/teamFoundedHeadline"
                 tools:text="1909"/>
 
             <TextView
-                android:id="@+id/stadiumHeadline"
+                android:id="@+id/teamStadiumHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stadiumHeadline"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/foundedYear"
-                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"/>
+                app:layout_constraintTop_toBottomOf="@id/teamFoundedYear"
+                app:layout_constraintLeft_toRightOf="@id/teamGuidelineVertical_25_percent"/>
 
             <TextView
-                android:id="@+id/stadiumName"
+                android:id="@+id/teamStadiumName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/stadiumHeadline"
-                app:layout_constraintLeft_toLeftOf="@id/stadiumHeadline"
+                app:layout_constraintTop_toBottomOf="@id/teamStadiumHeadline"
+                app:layout_constraintLeft_toLeftOf="@id/teamStadiumHeadline"
                 tools:text="Westfalenstadion"/>
 
             <ImageView
-                android:id="@+id/stadiumImage"
+                android:id="@+id/teamStadiumImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
-                app:layout_constraintTop_toBottomOf="@id/stadiumName"
+                app:layout_constraintLeft_toRightOf="@id/teamGuidelineVertical_25_percent"
+                app:layout_constraintTop_toBottomOf="@id/teamStadiumName"
                 app:layout_constraintWidth_percent="0.5"
                 app:layout_constraintDimensionRatio="3:2"
                 android:contentDescription="@string/stadiumImageDescription"
                 tools:src="@drawable/test_stadium" />
 
             <TextView
-                android:id="@+id/capacityHeadline"
+                android:id="@+id/teamCapacityHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/capacityHeadline"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/stadiumImage"
-                app:layout_constraintLeft_toRightOf="@id/guideline_vertical"/>
+                app:layout_constraintTop_toBottomOf="@id/teamStadiumImage"
+                app:layout_constraintLeft_toRightOf="@id/teamGuidelineVertical_25_percent"/>
 
             <TextView
-                android:id="@+id/capacityNumber"
+                android:id="@+id/teamCapacityNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/capacityHeadline"
-                app:layout_constraintLeft_toLeftOf="@id/capacityHeadline"
+                app:layout_constraintTop_toBottomOf="@id/teamCapacityHeadline"
+                app:layout_constraintLeft_toLeftOf="@id/teamCapacityHeadline"
                 tools:text="99999"/>
 
             <View
-                android:id="@+id/spacer2"
+                android:id="@+id/teamSpacerBottom"
                 style="@style/Spacer"
-                app:layout_constraintTop_toBottomOf="@id/capacityNumber"
-                app:layout_constraintBottom_toTopOf="@id/descriptionSubheading"
+                app:layout_constraintTop_toBottomOf="@id/teamCapacityNumber"
+                app:layout_constraintBottom_toTopOf="@id/teamDescriptionSubheading"
                 app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
-                android:id="@+id/descriptionSubheading"
+                android:id="@+id/teamDescriptionSubheading"
                 style="@style/Subheading"
                 android:text="@string/descriptionSubheading"
                 android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/capacityNumber"
+                app:layout_constraintTop_toBottomOf="@id/teamCapacityNumber"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
             <TextView
-                android:id="@+id/clubDescription"
+                android:id="@+id/teamDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -215,7 +215,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:justificationMode="inter_word"
-                app:layout_constraintTop_toBottomOf="@id/descriptionSubheading"
+                app:layout_constraintTop_toBottomOf="@id/teamDescriptionSubheading"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="@string/toolsDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.group04.soccerapp.ClubActivity;
 import com.example.group04.soccerapp.R;
+import com.example.group04.soccerapp.TeamActivity;
 import com.example.group04.soccerapp.api.ApiHelper;
 import com.example.group04.soccerapp.model.TableResponse;
 import com.example.group04.soccerapp.model.TeamTableData;
@@ -52,7 +52,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         Integer clubID = teamTableData.getTeamId();
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();
-            Intent openMatchdayActivity = new Intent(context , ClubActivity.class);
+            Intent openMatchdayActivity = new Intent(context , TeamActivity.class);
             openMatchdayActivity.putExtra("clubId", clubID);
             context.startActivity(openMatchdayActivity);
         });

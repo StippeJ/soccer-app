@@ -136,13 +136,13 @@ public class BetActivity extends BaseActivity {
         super.onStart();
 
         imageHomeTeam.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ClubActivity.class);
+            Intent intent = new Intent(this, TeamActivity.class);
             intent.putExtra("clubId", currentEvent.getIdHomeTeam());
             startActivity(intent);
         });
 
         imageAwayTeam.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ClubActivity.class);
+            Intent intent = new Intent(this, TeamActivity.class);
             intent.putExtra("clubId", currentEvent.getIdAwayTeam());
             startActivity(intent);
         });

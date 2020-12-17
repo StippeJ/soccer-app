@@ -27,7 +27,7 @@ import retrofit2.Response;
 /**
  * @author Tim-Loris Deinert
  */
-public class ClubActivity extends BaseActivity {
+public class TeamActivity extends BaseActivity {
 
     ApiHelper apiHelper;
     //Create Api View variables
@@ -62,31 +62,31 @@ public class ClubActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club);
+        setContentView(R.layout.activity_team);
 
         apiHelper = new ApiHelper();
 
         //get needed Views
-        contentGroup = findViewById(R.id.clubContentGroup);
-        progressBar = findViewById(R.id.clubProgressSpinner);
-        error = findViewById(R.id.clubErrorText);
-        teamName = findViewById(R.id.clubName);
-        teamBadge = findViewById(R.id.clubImage);
-        iconFb = findViewById(R.id.iconFacebook);
-        iconTw = findViewById(R.id.iconTwitter);
-        iconIn = findViewById(R.id.iconInstagram);
-        foundedYear = findViewById(R.id.foundedYear);
-        stadiumName = findViewById(R.id.stadiumName);
-        stadiumImage = findViewById(R.id.stadiumImage);
-        capacity = findViewById(R.id.capacityNumber);
-        teamDescription = findViewById(R.id.clubDescription);
-        infoHeading = findViewById(R.id.infoSubheading);
-        foundedHeading = findViewById(R.id.foundedHeadline);
-        stadiumHeading = findViewById(R.id.stadiumHeadline);
-        capacityHeading = findViewById(R.id.capacityHeadline);
-        descriptionHeading = findViewById(R.id.descriptionSubheading);
-        spacer1 = findViewById(R.id.spacer1);
-        spacer2 = findViewById(R.id.spacer2);
+        contentGroup = findViewById(R.id.teamContentGroup);
+        progressBar = findViewById(R.id.teamProgressSpinner);
+        error = findViewById(R.id.teamErrorText);
+        teamName = findViewById(R.id.teamName);
+        teamBadge = findViewById(R.id.teamImage);
+        iconFb = findViewById(R.id.teamIconFacebook);
+        iconTw = findViewById(R.id.teamIconTwitter);
+        iconIn = findViewById(R.id.teamIconInstagram);
+        foundedYear = findViewById(R.id.teamFoundedYear);
+        stadiumName = findViewById(R.id.teamStadiumName);
+        stadiumImage = findViewById(R.id.teamStadiumImage);
+        capacity = findViewById(R.id.teamCapacityNumber);
+        teamDescription = findViewById(R.id.teamDescription);
+        infoHeading = findViewById(R.id.teamInfoSubheading);
+        foundedHeading = findViewById(R.id.teamFoundedHeadline);
+        stadiumHeading = findViewById(R.id.teamStadiumHeadline);
+        capacityHeading = findViewById(R.id.teamCapacityHeadline);
+        descriptionHeading = findViewById(R.id.teamDescriptionSubheading);
+        spacer1 = findViewById(R.id.teamSpacerTop);
+        spacer2 = findViewById(R.id.teamSpacerBottom);
     }
 
     /**
