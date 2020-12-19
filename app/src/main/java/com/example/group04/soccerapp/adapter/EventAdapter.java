@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * @author Jan Stippe
+ * @author Jan Stippe, André Bautz
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.NextEventViewHolder> {
 

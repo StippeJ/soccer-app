@@ -24,6 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
+ * The MainActivity implements the results of the last 15 matches of the bundesliga
  * @author André Bautz
  */
 public class MainActivity extends BaseActivity {
@@ -72,20 +73,24 @@ public class MainActivity extends BaseActivity {
      * @author André Bautz
      */
     public void getLastMatchesFromApi() {
+        // Activate a progressbar while the data from the api is requested
         Group contentGroup = findViewById(R.id.mainContentGroup);
         ProgressBar progressBar = findViewById(R.id.mainProgressSpinner);
         contentGroup.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
+        // Get the data from the api
         soccerRepo.getLastEventsOfLeague(new Callback<EventsResponse>() {
             @Override
             public void onResponse(@NotNull Call<EventsResponse> call, @NotNull Response<EventsResponse> response) {
                 if(response.isSuccessful()) {
+                    // Give the data to the adapter and hide the progressbar
                     EventsResponse eventsResponse = response.body();
                     eventAdapter.updateData(eventsResponse.getDescendingEvents());
                     progressBar.setVisibility(View.INVISIBLE);
                     contentGroup.setVisibility(View.VISIBLE);
                 }else {
+                    // Give out an error message
                     progressBar.setVisibility(View.INVISIBLE);
                     showError(false);
                 }
@@ -93,6 +98,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onFailure(@NotNull Call<EventsResponse> call, @NotNull Throwable t) {
+                // Give out a failure message
                 progressBar.setVisibility(View.INVISIBLE);
                 showError(true);
             }
@@ -134,8 +140,10 @@ public class MainActivity extends BaseActivity {
         bundesligaButton.setVisibility(View.INVISIBLE);
 
         if (onFailure) {
+            // Set the error text for onFailure method
             error.setText(R.string.apiErrorOnFailure);
         } else {
+            // Set the error text for onError method
             error.setText(R.string.apiResponseError);
         }
 
