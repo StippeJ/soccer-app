@@ -1,6 +1,6 @@
 # BuLi Live
 
-An Android-app to show information about the german Bundesliga. Data is aquired through the [thesportsdb](thesportsdb.com)-API.
+An Android-app to show information about the german Bundesliga. Data is aquired through the [thesportsdb](https://thesportsdb.com/)-API.
 
 ## Features
 
