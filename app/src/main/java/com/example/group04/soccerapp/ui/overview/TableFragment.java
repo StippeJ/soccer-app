@@ -28,10 +28,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
+ * This fragment shows the table of the bundesliga
  * @author André Bautz
  */
 public class TableFragment extends Fragment {
 
+    // Initialize the adapter for the table
     TableAdapter tableAdapter;
 
     @Override
@@ -44,6 +46,7 @@ public class TableFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
+        // Show a loading bar while the data is requested from the api
         RecyclerView recyclerView = view.findViewById(R.id.tableRecyclerView);
         ProgressBar progressBar = view.findViewById(R.id.tableProgressBar);
         TextView errorTextView = view.findViewById(R.id.tableError);
@@ -51,19 +54,24 @@ public class TableFragment extends Fragment {
         recyclerView.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
+        // Implement the ApiHelper to get the team logos
         ApiHelper apiHelper = new ApiHelper();
+        // Getting the correct season of the bundesliga
         int actualYear = Calendar.getInstance().get(Calendar.YEAR);
         String actualSeason = actualYear + "-" + ++actualYear;
 
+        // Get the data from the api
         apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {
             @Override
             public void onResponse(@NotNull Call<TableResponse> call, @NotNull Response<TableResponse> response) {
                 if(response.isSuccessful()) {
+                    // Give the data to the adapter and hide the progressbar
                     TableResponse tableResponse = response.body();
                     tableAdapter.updateData(tableResponse.getTable());
                     progressBar.setVisibility(View.INVISIBLE);
                     recyclerView.setVisibility(View.VISIBLE);
                 } else {
+                    // Give out error message
                     errorTextView.setText(getString(R.string.apiResponseError));
                     progressBar.setVisibility(View.INVISIBLE);
                     errorTextView.setVisibility(View.VISIBLE);
@@ -72,6 +80,7 @@ public class TableFragment extends Fragment {
 
             @Override
             public void onFailure(@NotNull Call<TableResponse> call, @NotNull Throwable t) {
+                // Give out failure message
                 errorTextView.setText(getString(R.string.apiErrorOnFailure));
                 progressBar.setVisibility(View.INVISIBLE);
                 errorTextView.setVisibility(View.VISIBLE);
@@ -85,6 +94,7 @@ public class TableFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initialize the RecyclerView and its adapter
         RecyclerView tableRecyclerView = view.findViewById(R.id.tableRecyclerView);
         tableRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false));
         tableAdapter = new TableAdapter(new ArrayList<>());
