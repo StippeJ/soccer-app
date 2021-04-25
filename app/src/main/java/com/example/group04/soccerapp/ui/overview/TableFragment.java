@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,8 +58,15 @@ public class TableFragment extends Fragment {
         // Implement the ApiHelper to get the team logos
         ApiHelper apiHelper = new ApiHelper();
         // Getting the correct season of the bundesliga
-        int actualYear = Calendar.getInstance().get(Calendar.YEAR);
-        String actualSeason = actualYear + "-" + ++actualYear;
+        Calendar calendar = Calendar.getInstance();
+        int actualYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH);
+        String actualSeason;
+        if (currentMonth < 6) {
+            actualSeason = String.format(Locale.getDefault(), "%d-%d", actualYear - 1, actualYear);
+        } else {
+            actualSeason = String.format(Locale.getDefault(), "%d-%d", actualYear, actualYear + 1);
+        }
 
         // Get the data from the api
         apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {

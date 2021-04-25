@@ -8,19 +8,19 @@ import com.google.gson.annotations.SerializedName;
  */
 public class TeamTableData {
 
-	@SerializedName("loss")
+	@SerializedName("intLoss")
 	private int loss;
 
-	@SerializedName("teamid")
+	@SerializedName("idTeam")
 	private int teamId;
 
-	@SerializedName("name")
+	@SerializedName("strName")
 	private String name;
 
-	@SerializedName("draw")
+	@SerializedName("intDraw")
 	private int draw;
 
-	@SerializedName("win")
+	@SerializedName("intWin")
 	private int win;
 
 	public int getLoss(){

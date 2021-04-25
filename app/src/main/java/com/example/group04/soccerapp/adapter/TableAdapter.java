@@ -59,8 +59,15 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
 
         holder.tablePosition.setText(String.format(Locale.getDefault(), "%d", position + 1));
 
-        int actualYear = Calendar.getInstance().get(Calendar.YEAR);
-        String actualSeason = actualYear + "-" + ++actualYear;
+        Calendar calendar = Calendar.getInstance();
+        int actualYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH);
+        String actualSeason;
+        if (currentMonth < 6) {
+            actualSeason = String.format(Locale.getDefault(), "%d-%d", actualYear - 1, actualYear);
+        } else {
+            actualSeason = String.format(Locale.getDefault(), "%d-%d", actualYear, actualYear + 1);
+        }
 
         ApiHelper apiHelper = new ApiHelper();
         apiHelper.getSoccerRepo().getTable(new Callback<TableResponse>() {
