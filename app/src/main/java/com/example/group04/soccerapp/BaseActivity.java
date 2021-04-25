@@ -1,8 +1,5 @@
 package com.example.group04.soccerapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,12 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 /**
  * @author Tim-Loris Deinert
  */
 public class BaseActivity extends AppCompatActivity {
-    private static final int DISPLAY_MODE_NIGHT = 1;
-    private static final int DISPLAY_MODE_DAY = 0;
+    protected static final int DISPLAY_MODE_NIGHT = 1;
+    protected static final int DISPLAY_MODE_DAY = 0;
     protected static final String SHARED_PREFS = "sharedPrefs";
     protected static final String BET_LIST = "betList";
 
@@ -46,45 +46,44 @@ public class BaseActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menuItemAbout:
-                //Print app info's about version and the creator
-                Toast.makeText(this, R.string.toastAbout, Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menuItemBugReport:
-                //Create an Intent to report a bug to a given email address and start it
-                Intent sendMail = new Intent(Intent.ACTION_SEND);
+        int id = item.getItemId();
+        if (id == R.id.menuItemAbout) {
+            //Print app info's about version and the creator
+            Toast.makeText(this, R.string.toastAbout, Toast.LENGTH_LONG).show();
+            return true;
+        } else if (id == R.id.menuItemBugReport) {
+            //Create an Intent to report a bug to a given email address and start it
+            Intent sendMail = new Intent(Intent.ACTION_SEND);
 
-                //Set the needed Attributes for the Intent
-                sendMail.putExtra(Intent.EXTRA_EMAIL, new String[]{"bugReport.soccerApp@gmail.com"});
-                sendMail.putExtra(Intent.EXTRA_SUBJECT, "SoccerApp - Bug Report");
-                sendMail.putExtra(Intent.EXTRA_TEXT, "I have found the following Bug in your App: ");
-                sendMail.setType("message/rfc822");
+            //Set the needed Attributes for the Intent
+            sendMail.putExtra(Intent.EXTRA_EMAIL, new String[]{"bugReport.soccerApp@gmail.com"});
+            sendMail.putExtra(Intent.EXTRA_SUBJECT, "SoccerApp - Bug Report");
+            sendMail.putExtra(Intent.EXTRA_TEXT, "I have found the following Bug in your App: ");
+            sendMail.setType("message/rfc822");
 
-                //check if the user has an email app installed, if not show a Toast
-                try {
-                    startActivity(Intent.createChooser(sendMail, "Choose mail client"));
-                } catch (android.content.ActivityNotFoundException exception) {
-                    Toast.makeText(this, R.string.errorNoMailClients, Toast.LENGTH_LONG).show();
-                }
-                return true;
-            case R.id.menuItemDisplayMode:
-                //change the App theme to day or night mode
-                if(isNightModeActive(BaseActivity.this)) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    Toast.makeText(this, R.string.toastModeChangedDay, Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    Toast.makeText(this, R.string.toastModeChangedNight, Toast.LENGTH_SHORT).show();
-                }
-                return true;
-            case R.id.menuItemBugList:
-                //Print bug list as toast
-                Toast.makeText(this, R.string.toastBugList, Toast.LENGTH_LONG).show();
-                return true;
-            default:
-                return false;
+            //check if the user has an email app installed, if not show a Toast
+            try {
+                startActivity(Intent.createChooser(sendMail, "Choose mail client"));
+            } catch (android.content.ActivityNotFoundException exception) {
+                Toast.makeText(this, R.string.errorNoMailClients, Toast.LENGTH_LONG).show();
+            }
+            return true;
+        } else if (id == R.id.menuItemDisplayMode) {
+            //change the App theme to day or night mode
+            if (isNightModeActive(BaseActivity.this)) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                Toast.makeText(this, R.string.toastModeChangedDay, Toast.LENGTH_SHORT).show();
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                Toast.makeText(this, R.string.toastModeChangedNight, Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        } else if (id == R.id.menuItemBugList) {
+            //Print bug list as toast
+            Toast.makeText(this, R.string.toastBugList, Toast.LENGTH_LONG).show();
+            return true;
+        } else {
+            return false;
         }
     }
 
