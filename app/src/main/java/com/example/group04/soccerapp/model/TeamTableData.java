@@ -14,6 +14,9 @@ public class TeamTableData {
 	@SerializedName("idTeam")
 	private int teamId;
 
+	@SerializedName("intRank")
+	private int rank;
+
 	@SerializedName("strName")
 	private String name;
 
@@ -29,6 +32,10 @@ public class TeamTableData {
 
 	public int getTeamId(){
 		return teamId;
+	}
+
+	public int getRank() {
+		return rank;
 	}
 
 	public String getName(){
