@@ -61,8 +61,9 @@ public class MainActivityBehaviourTest {
     }
 
     @Test
-    public void buttonClick() {
+    public void buttonClick() throws InterruptedException {
         Intents.init();
+        Thread.sleep(5000);
         onView(withId(R.id.mainBundesligaButton)).perform(click());
         intended(hasComponent(OverviewActivity.class.getName()));
         Intents.release();
